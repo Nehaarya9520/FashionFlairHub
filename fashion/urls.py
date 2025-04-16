@@ -19,10 +19,5 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html"), name="home" ),
-    path('login/', TemplateView.as_view(template_name="login.html"), name="login" ),
-    path('profile/', TemplateView.as_view(template_name="user_page.html"), name="profile" ),
-    path('history/', TemplateView.as_view(template_name="history.html"), name="history" ),
-    path('fashion/', include("fashion.urls"), name="fashion" ),#import all files which is create in App
 ]
