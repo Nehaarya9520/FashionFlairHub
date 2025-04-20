@@ -24,5 +24,6 @@ urlpatterns = [
     path('login/', TemplateView.as_view(template_name="login.html"), name="login" ),
     path('profile/', TemplateView.as_view(template_name="user_page.html"), name="profile" ),
     path('history/', TemplateView.as_view(template_name="history.html"), name="history" ),
+    path('feedback/', TemplateView.as_view(template_name="feedback.html"), name="feedback" ),
     path('fashion/', include("fashion.urls"), name="fashion" ),#import all files which is create in App
 ]
