@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unique Reels Viewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glow {
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] min-h-screen text-white overflow-y-scroll">
+
+  <div class="flex flex-col items-center py-10 space-y-10">
+
+    <!-- Reel Card -->
+    <div class="relative w-[360px] h-[640px] rounded-[28px] overflow-hidden border-4 border-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 glow">
+      
+      <!-- Video -->
+      <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Floating Tags -->
+      <div class="absolute top-4 left-4 flex gap-2">
+        <span class="backdrop-blur-sm bg-white/20 px-3 py-1 rounded-full text-xs font-medium">#Funny</span>
+        <span class="backdrop-blur-sm bg-white/20 px-3 py-1 rounded-full text-xs font-medium">#SleepIsLife</span>
+      </div>
+
+      <!-- Video Info -->
+      <div class="absolute bottom-0 left-0 w-full px-4 py-5 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+        <h2 class="text-lg font-bold mb-1">Sleep Is EVERYTHING 😂</h2>
+        
+      </div>
+
+      <!-- Channel Info -->
+      <div class="absolute bottom-20 left-4 flex items-center gap-3">
+        <img src="https://yt3.googleusercontent.com/ytc/AGIKgqOBgoRkLTLrHQ=w48-h48-c-k" class="w-8 h-8 rounded-full border border-white" alt="Profile">
+        <button class="text-xs px-3 py-1 bg-white text-black font-semibold rounded-full hover:bg-pink-400 transition">Follow</button>
+      </div>
+
+      <!-- Actions -->
+      <div class="absolute top-1/2 right-3 transform -translate-y-1/2 space-y-5 text-center">
+        <button class="btn-glow hover:scale-110 transition"><span class="text-2xl">👍</span><div class="text-xs mt-1">610K</div></button>
+       
+        <button class="btn-glow hover:scale-110 transition"><span class="text-2xl">🔗</span><div class="text-xs mt-1">Share</div></button>
+      </div>
+    </div>
+
+    <!-- Add more reels below if needed -->
+    <!-- <div class="...">another reel</div> -->
+
+  </div>
+
+</body>
+</html>
