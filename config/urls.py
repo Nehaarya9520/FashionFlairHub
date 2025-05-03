@@ -22,7 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html"), name="home" ),
     path('login/', TemplateView.as_view(template_name="login.html"), name="login" ),
+    path('signup/', TemplateView.as_view(template_name="register.html"), name="register" ),
     path('profile/', TemplateView.as_view(template_name="user_page.html"), name="profile" ),
+    path('search/', TemplateView.as_view(template_name="search.html"), name="search" ),
     path('history/', TemplateView.as_view(template_name="history.html"), name="history" ),
     path('feedback/', TemplateView.as_view(template_name="feedback.html"), name="feedback" ),
     path('fashion/', include("fashion.urls"), name="fashion" ),#import all files which is create in App
