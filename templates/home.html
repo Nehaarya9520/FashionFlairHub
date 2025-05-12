@@ -81,36 +81,69 @@
     <button class="px-8 py-3 bg-white text-pink-600 font-semibold rounded-full shadow-lg hover:bg-gray-100 transition">Sign Up Now</button>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-gray-400 py-8">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Footer -->
+  <footer class="bg-gray-50 mt-16 pt-12 pb-6 border-t">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand & Social -->
       <div>
-        <h3 class="text-lg font-bold text-white mb-2">FASHION FLAIR HUB</h3>
-        <p>Your ultimate destination for fashion inspiration and style ideas.</p>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold text-white mb-2">Quick Links</h3>
-        <ul>
-          <li><a href="#" class="hover:text-pink-400">About Us</a></li>
-          <li><a href="#" class="hover:text-pink-400">Contact Us</a></li>
-          <li><a href="#" class="hover:text-pink-400">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold text-white mb-2">Follow Us</h3>
-        <div class="flex space-x-4">
-          <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="hover:text-pink-400"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="hover:text-pink-400"><i class="fab fa-youtube"></i></a>
+        <div class="text-2xl font-bold text-pink-600 mb-2">FASHION FLAIR HUB</div>
+        <p class="text-gray-600 mb-4">
+          Your ultimate destination for fashion inspiration and style ideas. Discover the latest trends through curated short videos from across the web.
+        </p>
+        <div class="flex space-x-4 text-2xl text-gray-500">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
+      <!-- Quick Links -->
+      <div>
+        <div class="font-bold text-lg mb-2">Quick Links</div>
+        <ul class="space-y-2 text-gray-700">
+          <li><a href="#" class="hover:text-pink-600">About Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Contact Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Women's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Men's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Fashion Ideas</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <div class="font-bold text-lg mb-2">Contact Info</div>
+        <ul class="space-y-2 text-gray-700">
+          <li>
+            <span class="text-pink-600 mr-2">&#x1F4CD;</span>
+            123 Fashion Street, Style Avenue, Trend City, 10001
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x260E;</span>
+            +1 (555) 123-4567
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x2709;</span>
+            info@fashionflairhub.com
+          </li>
+        </ul>
+      </div>
+      <!-- Subscribe -->
+      <div>
+        <div class="font-bold text-lg mb-2">Subscribe</div>
+        <p class="text-gray-600 mb-3">Get the latest fashion trends and style ideas delivered to your inbox.</p>
+        <form>
+          <input type="email" placeholder="Your email address" class="w-full border rounded px-3 py-2 mb-2 focus:outline-none" />
+          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">Subscribe</button>
+        </form>
+      </div>
     </div>
-    <div class="text-center mt-8 text-sm text-gray-500">
+    <div class="mt-10 border-t pt-4 text-center text-gray-500 text-sm">
       © 2025 Fashion Flair Hub. All rights reserved.
     </div>
   </footer>
+</body>
+</html>
 
+  
   <!-- GSAP Animations -->
   <script>
     gsap.from("nav", { y: -80, opacity: 0, duration: 1, ease: "power2.out" });
