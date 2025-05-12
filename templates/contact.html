@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Fashion Flair Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <section class="py-16 relative overflow-hidden">
+        <!-- Background Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-50"></div>
+        
+        <div class="center mx-auto relative z-10">
+            <!-- Contact Form -->
+            <div class="contact-form-container bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-8 rounded-2xl shadow-xl">
+                <h2 class="text-3xl font-playfair font-bold mb-8 text-pink-600 dark:text-pink-400">Send Us a Message</h2>
+                <form class="space-y-6">
+                    <!-- Name and Email -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="name" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Your Name</label>
+                            <div class="relative">
+                                <input id="name" type="text" placeholder="John Doe" class="w-full p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-pink-500 dark:focus:border-pink-400 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm" required />
+                                <span class="absolute right-3 top-3 text-pink-500">👤</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
+                            <div class="relative">
+                                <input id="email" type="email" placeholder="john@example.com" class="w-full p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-pink-500 dark:focus:border-pink-400 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm" required />
+                                <span class="absolute right-3 top-3 text-pink-500">📧</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="subject" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Subject</label>
+                        <div class="relative">
+                            <input id="subject" type="text" placeholder="How can we help you?" class="w-full p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-pink-500 dark:focus:border-pink-400 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm" required />
+                            <span class="absolute right-3 top-3 text-pink-500">📝</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Message</label>
+                        <div class="relative">
+                            <textarea id="message" placeholder="Your message here..." class="w-full p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-pink-500 dark:focus:border-pink-400 transition-all duration-300 min-h-[150px] bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm" required></textarea>
+                            <span class="absolute right-3 top-3 text-pink-500">💌</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-lg transition-all duration-300">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="mt-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Connect With Us</h3>
+                <p class="mb-6 text-gray-600 dark:text-gray-400">Follow us on social media for the latest updates, trends, and fashion inspiration.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="social-btn p-3 border-2 border-pink-500 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 transform hover:scale-110">📘</a>
+                    <a href="#" class="social-btn p-3 border-2 border-pink-500 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 transform hover:scale-110">📸</a>
+                    <a href="#" class="social-btn p-3 border-2 border-pink-500 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 transform hover:scale-110">🐦</a>
+                    <a href="#" class="social-btn p-3 border-2 border-pink-500 rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 transform hover:scale-110">📱</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+  <footer class="bg-gray-50 mt-16 pt-12 pb-6 border-t">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand & Social -->
+      <div>
+        <div class="text-2xl font-bold text-pink-600 mb-2">FASHION FLAIR HUB</div>
+        <p class="text-gray-600 mb-4">
+          Your ultimate destination for fashion inspiration and style ideas. Discover the latest trends through curated short videos from across the web.
+        </p>
+        <div class="flex space-x-4 text-2xl text-gray-500">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <div class="font-bold text-lg mb-2">Quick Links</div>
+        <ul class="space-y-2 text-gray-700">
+          <li><a href="#" class="hover:text-pink-600">About Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Contact Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Women's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Men's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Fashion Ideas</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <div class="font-bold text-lg mb-2">Contact Info</div>
+        <ul class="space-y-2 text-gray-700">
+          <li>
+            <span class="text-pink-600 mr-2">&#x1F4CD;</span>
+            123 Fashion Street, Style Avenue, Trend City, 10001
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x260E;</span>
+            +1 (555) 123-4567
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x2709;</span>
+            info@fashionflairhub.com
+          </li>
+        </ul>
+      </div>
+      <!-- Subscribe -->
+      <div>
+        <div class="font-bold text-lg mb-2">Subscribe</div>
+        <p class="text-gray-600 mb-3">Get the latest fashion trends and style ideas delivered to your inbox.</p>
+        <form>
+          <input type="email" placeholder="Your email address" class="w-full border rounded px-3 py-2 mb-2 focus:outline-none" />
+          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-10 border-t pt-4 text-center text-gray-500 text-sm">
+      © 2025 Fashion Flair Hub. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

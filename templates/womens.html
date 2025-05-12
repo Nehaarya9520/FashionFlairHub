@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Women's Fashion - Fashion Flair Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white text-gray-900">
+  <!-- Header -->
+  <header class="border-b">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between py-4 px-4">
+      <div class="text-pink-600 font-bold text-2xl">FASHION FLAIR HUB</div>
+      <nav class="flex space-x-6 mt-2 md:mt-0">
+        <a href="#" class="hover:text-pink-600">Home</a>
+        <a href="#" class="hover:text-pink-600">Men</a>
+        <a href="#" class="text-pink-600 font-semibold">Women</a>
+        <a href="#" class="hover:text-pink-600">Fashion Ideas</a>
+        <a href="#" class="hover:text-pink-600">About</a>
+        <a href="#" class="hover:text-pink-600">Contact</a>
+      </nav>
+      <div class="flex items-center space-x-4 mt-2 md:mt-0">
+        <button class="text-xl"><span>&#9788;</span></button>
+        <button class="text-xl"><span>&#128269;</span></button>
+        <button class="text-xl"><span>&#128100;</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-pink-100 py-8">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-2">Women's Fashion</h1>
+      <p class="text-gray-700">Discover the latest women's fashion trends, style tips, and inspiration through curated short videos.</p>
+    </div>
+  </section>
+
+  <!-- Filter and Tabs -->
+  <section class="container mx-auto px-4 mt-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+      <div class="mb-2 md:mb-0 text-gray-700">Showing 5 videos</div>
+      <div class="flex items-center space-x-4">
+        <div class="flex space-x-2 bg-gray-100 rounded">
+          <button class="px-3 py-1 font-semibold border-b-2 border-black">All Platforms</button>
+          <button class="px-3 py-1 text-gray-500 hover:text-black">Instagram</button>
+          <button class="px-3 py-1 text-gray-500 hover:text-black">YouTube</button>
+          <button class="px-3 py-1 text-gray-500 hover:text-black">Facebook</button>
+        </div>
+        <div class="relative">
+          <select class="border rounded px-3 py-1 focus:outline-none">
+            <option>Trending</option>
+            <option>Newest</option>
+            <option>Most Viewed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram-Style Video Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Card 1 -->
+      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=400&q=80" alt="Summer Style Guide" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+            <span class="text-white text-xs">450K views</span>
+          </div>
+          <div class="text-white font-semibold">Summer Style Guide</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>35K <span class="ml-1">&#9825;</span></span>
+            <span>245 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+            <span class="text-white text-xs">280K views</span>
+          </div>
+          <div class="text-white font-semibold">Office Wear Essentials</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>22K <span class="ml-1">&#9825;</span></span>
+            <span>156 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+            <span class="text-white text-xs">280K views</span>
+          </div>
+          <div class="text-white font-semibold">Office Wear Essentials</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>22K <span class="ml-1">&#9825;</span></span>
+            <span>156 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div><!-- Card 2 -->
+      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+            <span class="text-white text-xs">280K views</span>
+          </div>
+          <div class="text-white font-semibold">Office Wear Essentials</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>22K <span class="ml-1">&#9825;</span></span>
+            <span>156 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div><!-- Card 2 -->
+        <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+          <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+            <div <!-- Card 2 -->
+              <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+                <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+                    <span class="text-white text-xs">280K views</span>
+                  </div>
+                  <div class="text-white font-semibold">Office Wear Essentials</div>
+                  <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+                    <span>22K <span class="ml-1">&#9825;</span></span>
+                    <span>156 <span class="ml-1">&#128172;</span></span>
+                  </div>
+                </div>
+              </div>="flex items-center justify-between mb-2">
+              <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+              <span class="text-white text-xs">280K views</span>
+            </div>
+            <div class="text-white font-semibold">Office Wear Essentials</div>
+            <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+              <span>22K <span class="ml-1">&#9825;</span></span>
+              <span>156 <span class="ml-1">&#128172;</span></span>
+            </div>
+          </div>
+        </div>
+      </div><!-- Card 2 -->
+      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
+            <span class="text-white text-xs">280K views</span>
+          </div>
+          <div class="text-white font-semibold">Office Wear Essentials</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>22K <span class="ml-1">&#9825;</span></span>
+            <span>156 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Accessorizing Tips" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
+            <span class="text-white text-xs">195K views</span>
+          </div>
+          <div class="text-white font-semibold">styleTips</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>18K <span class="ml-1">&#9825;</span></span>
+            <span>132 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div>
+       <!-- Card 3 -->
+       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Accessorizing Tips" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
+            <span class="text-white text-xs">195K views</span>
+          </div>
+          <div class="text-white font-semibold">styleTips</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>18K <span class="ml-1">&#9825;</span></span>
+            <span>132 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div>
+       <!-- Card 3 -->
+       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Accessorizing Tips" class="object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
+            <span class="text-white text-xs">195K views</span>
+          </div>
+          <div class="text-white font-semibold">styleTips</div>
+          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
+            <span>18K <span class="ml-1">&#9825;</span></span>
+            <span>132 <span class="ml-1">&#128172;</span></span>
+          </div>
+        </div>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </section>
+
+  <section class="py-16">
+    <h2 class="text-4xl font-bold text-center mb-2">Featured Women Fashion Creators</h2>
+    <p class="text-center text-gray-600 mb-10">Follow these trending fashion creators for daily inspiration and style tips.</p>
+    <div id="creatorsGrid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-4">
+      <!-- Creator Card 1 -->
+      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
+        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
+          <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Creator 1" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-lg font-semibold">Creator 1</div>
+        <div class="text-gray-500 text-sm mb-3">@creator1</div>
+        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
+      </div>
+      <!-- Creator Card 2 -->
+      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
+        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
+          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Creator 2" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-lg font-semibold">Creator 2</div>
+        <div class="text-gray-500 text-sm mb-3">@creator2</div>
+        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
+      </div>
+      <!-- Creator Card 3 -->
+      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
+        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
+          <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="Creator 3" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-lg font-semibold">Creator 3</div>
+        <div class="text-gray-500 text-sm mb-3">@creator3</div>
+        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
+      </div>
+      <!-- Creator Card 4 -->
+      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
+        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
+          <img src="https://randomuser.me/api/portraits/women/14.jpg" alt="Creator 4" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-lg font-semibold">Creator 4</div>
+        <div class="text-gray-500 text-sm mb-3">@creator4</div>
+        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
+      </div>
+      <!-- Creator Card 5 -->
+      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
+        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
+          <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="Creator 5" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-lg font-semibold">Creator 5</div>
+        <div class="text-gray-500 text-sm mb-3">@creator5</div>
+        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
+      </div>
+      <!-- Creator Card 6 -->
+      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
+        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
+          <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="Creator 6" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-lg font-semibold">Creator 6</div>
+        <div class="text-gray-500 text-sm mb-3">@creator6</div>
+        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // GSAP animation for creator cards
+    window.addEventListener('DOMContentLoaded', () => {
+      gsap.from(".creator-card", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out"
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 mt-16 pt-12 pb-6 border-t">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand & Social -->
+      <div>
+        <div class="text-2xl font-bold text-pink-600 mb-2">FASHION FLAIR HUB</div>
+        <p class="text-gray-600 mb-4">
+          Your ultimate destination for fashion inspiration and style ideas. Discover the latest trends through curated short videos from across the web.
+        </p>
+        <div class="flex space-x-4 text-2xl text-gray-500">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <div class="font-bold text-lg mb-2">Quick Links</div>
+        <ul class="space-y-2 text-gray-700">
+          <li><a href="#" class="hover:text-pink-600">About Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Contact Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Women's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Men's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Fashion Ideas</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <div class="font-bold text-lg mb-2">Contact Info</div>
+        <ul class="space-y-2 text-gray-700">
+          <li>
+            <span class="text-pink-600 mr-2">&#x1F4CD;</span>
+            123 Fashion Street, Style Avenue, Trend City, 10001
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x260E;</span>
+            +1 (555) 123-4567
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x2709;</span>
+            info@fashionflairhub.com
+          </li>
+        </ul>
+      </div>
+      <!-- Subscribe -->
+      <div>
+        <div class="font-bold text-lg mb-2">Subscribe</div>
+        <p class="text-gray-600 mb-3">Get the latest fashion trends and style ideas delivered to your inbox.</p>
+        <form>
+          <input type="email" placeholder="Your email address" class="w-full border rounded px-3 py-2 mb-2 focus:outline-none" />
+          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-10 border-t pt-4 text-center text-gray-500 text-sm">
+      © 2025 Fashion Flair Hub. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

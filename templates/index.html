@@ -7,243 +7,1312 @@
 
 
 {% block content %}
-<div class="bg-gray-100">
-  <header class="bg-gray-700 text-white p-4">
-    
 
-      <div class="container mx-auto flex justify-between items-center">
-        
-          <h1 class="text-2xl font-bold ">Fashion Flair Hub</h1>
-          
-          <nav>
-              <a href="/" class="mx-2 hover:underline">Home</a>
-              <a href="about.html" class="mx-2 hover:underline">About</a>
-              <a href="contact.html" class="mx-2 hover:underline">Contact</a>
-              <a href="/login" class="mx-2 hover:underline">Login</a>
-              <a href="/signup" class="mx-2 hover:underline">SignUp</a>
-          </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Women's Fashion - Fashion Flair Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white text-gray-900">
+  
 
-      </div>
-  </header>
-
-  <main>
-
-  </main>
-  <div>
-
-          
-          <div class="bg-[url('https://c4.wallpaperflare.com/wallpaper/417/352/53/fashion-wallpaper-preview.jpg')] bg-cover bg-center flex items-center justify-center h-screen">
 
   
-          <div class="text-center text-white w-full max-w-2xl rounded-lg bg-black/50 p-10">
-            
-              <h1 class="text-8xl  font-bold mb-5 hero-title" style="font-family: 'Tangerine', cursive;">Fashion Flair Hub</h1>
-              <p class="text-lg mb-6">
-                  <span class=" text-2xl text-lime-100 ">Just restyle what</span> <span class="text-pink-500">you
-                      
-                      have..</span>.
-              </p>
-
-          
-          
   
-              <p class="mt-4">
-                  <a href="/search">
-                      <button
-                          class="brightness-150 dark:brightness-100 group hover:shadow-lg hover:shadow-yellow-700/60 transition ease-in-out hover:scale-105 p-1 rounded-xl bg-gradient-to-br from-yellow-800 via-yellow-600 to-yellow-800 hover:from-yellow-700 hover:via-yellow-800 hover:to-yellow-600">
-                          <div class="px-6 py-2 backdrop-blur-xl bg-black/80 rounded-lg font-bold w-full h-full">
-                              <div class="group-hover:scale-100 flex group-hover:text-yellow-500 text-yellow-600 gap-1">
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
-                                      class="w-6 h-6 stroke-yellow-600 group-hover:stroke-yellow-500 group-hover:stroke-{1.99}">
-                                      <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z">
-                                      </path>
-                                  </svg>
-                                  Get Started
-                              </div>
-                          </div>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+      <style>
+          .modal-bg {
+              background: rgba(0,0,0,0.5);
+              display: none;
+          }
+          .modal-bg.active {
+              display: flex;
+          }
+          .no-outline:focus {
+              outline: none;
+              box-shadow: none;
+          }
+      </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  
+      <!-- Navbar -->
+      <nav class="bg-white shadow-sm border-b border-pink-100">
+          <div class="max-w-7xl mx-auto px-4 sm:px-8">
+              <div class="flex justify-between items-center h-20">
+                  <!-- Logo -->
+                  <div class="flex-shrink-0">
+                      <span class="text-3xl font-serif font-bold text-pink-600 tracking-wide">FASHION FLAIR HUB</span>
+                  </div>
+                  <!-- Navigation Links -->
+                  <div class="hidden md:flex space-x-8 ml-12">
+                      <a href="#" class="text-pink-600 font-semibold text-lg hover:text-pink-700 border-b-2 border-pink-500 pb-1">Home</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Men</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Women</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Fashion Ideas</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">About</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Contact</a>
+                  </div>
+                  <!-- Icons -->
+                  <div class="flex items-center space-x-6 ml-6">
+                      <!-- Moon Icon (Dark mode toggle placeholder) -->
+                      <button class="text-black hover:text-pink-600 focus:outline-none" title="Toggle Dark Mode">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+                          </svg>
                       </button>
-                  </a>
-              </p>
+                      <!-- Search Icon (opens modal) -->
+                      <button id="openModal" class="text-black hover:text-pink-600 focus:outline-none" title="Open Search">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                          </svg>
+                      </button>
+                      <!-- User Icon -->
+                      <button class="text-black hover:text-pink-600 focus:outline-none" title="Profile">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196z"/>
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </nav>
+  
+      
+  
+      <!-- Modal -->
+      <div id="modalBg" class="modal-bg fixed inset-0 z-50 items-center justify-center">
+          <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-xl mx-auto p-6 relative">
+              <!-- Close Icon -->
+              <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 focus:outline-none">
+                  <!-- X Icon SVG -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+              </button>
+              <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Search Fashion Content</h2>
+              <form class="flex flex-col sm:flex-row items-center gap-3">
+                  <div class="flex flex-1 items-center border-2 border-pink-400 rounded-lg px-3 py-2 bg-white focus-within:ring-2 focus-within:ring-pink-300 transition">
+                      <input
+                          id="searchInput"
+                          type="text"
+                          placeholder="Search for fashion ideas, trends, styles..."
+                          class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 no-outline"
+                      />
+                      <!-- Voice Icon -->
+                      <button type="button" id="voiceBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Voice Search">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v2m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4zm0-2V6a4 4 0 018 0v6a4 4 0 01-8 0z"/>
+                          </svg>
+                      </button>
+                      <!-- Camera Icon -->
+                      <button type="button" id="imageBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Image Search">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h2l2-3h10l2 3h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2zm9 3a4 4 0 100 8 4 4 0 000-8z"/>
+                          </svg>
+                      </button>
+                  </div>
+                  <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition w-full sm:w-auto">Search</button>
+              </form>
           </div>
       </div>
   
-      </section>
-  </div>
-  <div>
-      
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-          <div class="mx-auto max-w-screen-md px-4 md:px-8">
-            <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6">Our competitive advantage</h1>
-        
-            <p class="mb-6 text-gray-700 sm:text-lg md:mb-8">
-              Fashion Flair Hub stands out in the fashion industry by offering a unique content aggregation system that compiles short fashion videos from multiple sources, including Instagram, YouTube, Pinterest, and Facebook, into a single, easy-to-navigate feed.
-               This saves users the hassle of browsing through multiple platforms to stay updated with the latest trends. The platform also introduces an advanced smart fashion search, allowing users to find outfit ideas through text, image, and voice-based search— a feature that sets it apart from other major fashion platforms.
-            </p>
-        
-            <h2 class="mb-4 text-xl font-semibold text-gray-800 sm:text-3xl md:mb-6">About us</h2>
-            <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
+      <script>
+          // Modal open/close
+          const openModal = document.getElementById('openModal');
+          const modalBg = document.getElementById('modalBg');
+          const closeModal = document.getElementById('closeModal');
+          const searchInput = document.getElementById('searchInput');
+  
+          openModal.addEventListener('click', () => {
+              modalBg.classList.add('active');
+              setTimeout(() => searchInput.focus(), 100);
+          });
+          closeModal.addEventListener('click', () => {
+              modalBg.classList.remove('active');
+              searchInput.value = '';
+          });
+          // Close modal on background click
+          modalBg.addEventListener('click', (e) => {
+              if (e.target === modalBg) {
+                  modalBg.classList.remove('active');
+                  searchInput.value = '';
+              }
+          });
+  
+          // Search functionality
+          document.querySelector('form').addEventListener('submit', function(e) {
+              e.preventDefault();
+              alert('Text Search: ' + searchInput.value);
+          });
+          document.getElementById('voiceBtn').addEventListener('click', function() {
+              alert('Voice Search initiated');
+          });
+          document.getElementById('imageBtn').addEventListener('click', function() {
+              alert('Image Search initiated');
+          });
+  
+          // Responsive: close modal on ESC
+          document.addEventListener('keydown', function(e) {
+              if (e.key === "Escape") {
+                  modalBg.classList.remove('active');
+                  searchInput.value = '';
+              }
+          });
+      </script>
+  </body>
+  </html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Flair Hub - Home</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 via-pink-50 to-white text-gray-900">
 
-            <p class=" text-gray-700 sm:text-lg">Fashion blogging is like talking to a friend about the latest trends, style tips, and beauty hacks. Now style! 
-              It’s a fun way to share your fashion sense and connect with others who love style. Fashion Flair Hub brings all the best fashion videos from Instagram, Facebook, Pinterest and YouTube into one easy-to-use platform.
-               It provides you the short videos. What makes us special? You can find fashion ideas using text, images, or even speech-to-text—something no other platform offers! Most of the platform provide long videos which is time consuming. 
-               Plus, since bloggers shape trends and shopping choices, we help connect fashion with digital marketing to keep you in style. When users use our platform they can get styling ideas in limited time for all the genders and generations.
-                No need to browse multiple apps! Get the latest fashion trends, styling tips, and outfit ideas from across platforms in one feed. Quick, stylish, and informative videos to keep you updated on what’s trending in fashion—without wasting time. 
-                It is smooth, designed for effortless scrolling and discovering trending fashion videos. 
 
-            </p>
-            <br>
-        
-           
-        
-            <div class="relative mb-6 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:mb-8">
-              <img src="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474289Pqx/background-thoi-trang-quan-ao-don-gian-dep-nhat_025703620.jpg" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-            </div>
-        
-            
-        
-           
-  </div>
-
-  <section class="relative">
-      
-
-    <div class="h-40 bg-yellow-600 flex items-center justify-center">
-      <h2 class="text-7xl text-white font-bold mb-5" style="font-family: 'Tangerine', cursive;">Contact Us</h2>
-
-
-    </div>
-</section>
-
-<!-- Contact Information -->
-<section class="bg-gray-900 container mx-auto py-10 px-6">
-    <h3 class="text-3xl font-bold text-white text-center">Get In Touch</h3>
-    <p class="text-center text-white mt-2">We’d love to hear from you! Reach out for any inquiries.</p>
-
-    <div class="grid md:grid-cols-2 gap-8 mt-8">
-        <!-- Contact Details -->
-        <div class="bg-yellow-600 p-6 rounded-lg shadow-md">
-            <h4 class="text-2xl font-bold mb-4">Contact Information</h4>
-            <p><strong>Phone:</strong> +91 8585857816</p>
-            <p><strong>Email:</strong> fashionflairhub@gmail.com</p>
-            <p><strong>Address:</strong> RH – 14, E Wing, Crystal Palace, Kanchpada, Malad West, Mumbai – 400 064, Maharashtra, India</p>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="bg-yellow-600 p-6 rounded-lg shadow-md">
-            <h4 class="text-2xl font-bold mb-4">Send Us a Message</h4>
-            <form action="#" method="POST">
-                <label class="block text-gray-900">Full Name</label>
-                <input type="text" class="w-full border border-gray-300 p-2 rounded-lg mb-4" placeholder="Your Name">
-
-                <label class="block text-gray-900">Email</label>
-                <input type="email" class="w-full border border-gray-300 p-2 rounded-lg mb-4" placeholder="Your Email">
-
-                <label class="block text-gray-900">Message</label>
-                <textarea class="w-full border border-gray-300 p-2 rounded-lg mb-4" rows="4" placeholder="Your Message"></textarea>
-
-                <button class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-red-600">Send Message</button>
-            </form>
-        </div>
-    </div>
-</section>
   
  
-  
-  <div>
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-          <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-            <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">Login</h2>
-        
-            <form class="mx-auto max-w-lg rounded-lg border">
-              <div class="flex flex-col gap-4 p-4 md:p-8">
-                <div>
-                  <label for="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
-                  <input name="email" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                </div>
-        
-                <div>
-                  <label for="password" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password</label>
-                  <input name="password" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                </div>
-        
-                <button class="block rounded-lg bg-gray-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base">Log in</button>
-        
-                <div class="relative flex items-center justify-center">
-                  <span class="absolute inset-x-0 h-px bg-gray-300"></span>
-                  <span class="relative bg-white px-4 text-sm text-gray-400">Log in with social</span>
-                </div>
-        
-                <button class="flex items-center justify-center gap-2 rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-600 focus-visible:ring active:bg-blue-700 md:text-base">
-                  <svg class="h-5 w-5 shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 0C5.37273 0 0 5.37273 0 12C0 18.0164 4.43182 22.9838 10.2065 23.8516V15.1805H7.23764V12.0262H10.2065V9.92727C10.2065 6.45218 11.8996 4.92655 14.7878 4.92655C16.1711 4.92655 16.9025 5.02909 17.2489 5.076V7.82945H15.2787C14.0525 7.82945 13.6244 8.99182 13.6244 10.302V12.0262H17.2178L16.7302 15.1805H13.6244V23.8773C19.4815 23.0825 24 18.0747 24 12C24 5.37273 18.6273 0 12 0Z" fill="white" />
-                  </svg>
-        
-                  Continue with Facebook
-                </button>
-        
-                <button class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-8 py-3 text-center text-sm font-semibold text-gray-800 outline-none ring-gray-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:text-base">
-                  <svg class="h-5 w-5 shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.7449 12.27C23.7449 11.48 23.6749 10.73 23.5549 10H12.2549V14.51H18.7249C18.4349 15.99 17.5849 17.24 16.3249 18.09V21.09H20.1849C22.4449 19 23.7449 15.92 23.7449 12.27Z" fill="#4285F4" />
-                    <path d="M12.2549 24C15.4949 24 18.2049 22.92 20.1849 21.09L16.3249 18.09C15.2449 18.81 13.8749 19.25 12.2549 19.25C9.12492 19.25 6.47492 17.14 5.52492 14.29H1.54492V17.38C3.51492 21.3 7.56492 24 12.2549 24Z" fill="#34A853" />
-                    <path d="M5.52488 14.29C5.27488 13.57 5.14488 12.8 5.14488 12C5.14488 11.2 5.28488 10.43 5.52488 9.71V6.62H1.54488C0.724882 8.24 0.254883 10.06 0.254883 12C0.254883 13.94 0.724882 15.76 1.54488 17.38L5.52488 14.29Z" fill="#FBBC05" />
-                    <path d="M12.2549 4.75C14.0249 4.75 15.6049 5.36 16.8549 6.55L20.2749 3.13C18.2049 1.19 15.4949 0 12.2549 0C7.56492 0 3.51492 2.7 1.54492 6.62L5.52492 9.71C6.47492 6.86 9.12492 4.75 12.2549 4.75Z" fill="#EA4335" />
-                  </svg>
-        
-                  Continue with Google
-                </button>
-              </div>
-        
-              <div class="flex items-center justify-center bg-gray-100 p-4">
-                <p class="text-center text-sm text-gray-500">Don't have an account? <a href="#" class="text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">Register</a></p>
-              </div>
-            </form>
-          </div>
-        </div>
-  </div>
-
-  <div class="bg-white pt-4 sm:pt-10 lg:pt-12">
-      <footer class="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <div class="flex flex-col items-center border-t pt-6">
-          <!-- nav - start -->
-          <nav class="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start md:gap-6">
-            <a href="#" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">About</a>
-            <a href="#" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Contact Us </a>
-            <a href="#" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Login</a>
-            <a href="#" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Home</a>
-        
-          </nav>
-          <!-- nav - end -->
-    
-          <!-- social - start -->
-          <div class="flex gap-4">
-            <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
-              <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
-    
-            <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
-              <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-              </svg>
-            </a>
-    
-            <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
-              <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-    
-            
-            </a>
-          </div>
-          <!-- social - end -->
-        </div>
-    
-      
-        <p class="bg-gray-800 text-white text-center p-4 mt-10">&copy; 2025 Fashion Flair Hub. All rights reserved.</p>
-    </footer>
+  <!-- Hero Section -->
+  <!-- Hero Section -->
+  <section class="hero-bg text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-7xl font-bold drop-shadow-lg">Discover Your Fashion Identity</h1>
+      <p class="text-lg md:text-xl mt-4 drop-shadow-lg">Short Reels • AI Styling • Voice Search</p>
+      <button class="mt-6 px-8 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-lg transition">Get Started</button>
     </div>
-  </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-gradient-to-br from-white to-pink-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Features You’ll Love</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white shadow-lg rounded-lg text-center">
+          <h3 class="text-xl font-semibold text-pink-600 mb-2">Smart Fashion Search</h3>
+          <p class="text-gray-600">Find outfits by typing, speaking, or uploading an image. Your personal stylist, powered by AI.</p>
+        </div>
+        <div class="p-6 bg-white shadow-lg rounded-lg text-center">
+          <h3 class="text-xl font-semibold text-pink-600 mb-2">Event Outfit Suggestions</h3>
+          <p class="text-gray-600">Need to dress for a wedding or brunch? We’ve got outfit ideas for every occasion.</p>
+        </div>
+        <div class="p-6 bg-white shadow-lg rounded-lg text-center">
+          <h3 class="text-xl font-semibold text-pink-600 mb-2">Fashion Reels Feed</h3>
+          <p class="text-gray-600">Scroll through curated fashion videos from your favorite platforms — all in one feed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-pink-600 text-white text-center">
+    <h2 class="text-4xl font-bold mb-4">Ready to Elevate Your Style?</h2>
+    <p class="text-lg mb-6">Join thousands of fashion enthusiasts and start your journey today.</p>
+    <button class="px-8 py-3 bg-white text-pink-600 font-semibold rounded-full shadow-lg hover:bg-gray-100 transition">Sign Up Now</button>
+  </section>
+
+  <!-- GSAP -->
+  <script>
+    // GSAP Animations
+    gsap.from("header", {y: -80, opacity: 0, duration: 1, ease: "power2.out"});
+    gsap.from("h1", {x: -100, opacity: 0, duration: 1, delay: 0.5, ease: "power2.out"});
+    gsap.from("p", {x: -100, opacity: 0, duration: 1, delay: 0.8, ease: "power2.out"});
+    gsap.from("button", {scale: 0.8, opacity: 0, duration: 0.7, delay: 1.1, stagger: 0.2, ease: "back.out(1.7)"});
+    gsap.from("#heroImage", {scale: 0.7, opacity: 0, duration: 1, delay: 1.2, ease: "power2.out"});
+
+    // Dark Mode Toggle
+    const darkToggle = document.getElementById('darkToggle');
+    const body = document.getElementById('body');
+    darkToggle.addEventListener('click', () => {
+      body.classList.toggle('bg-gray-900');
+      body.classList.toggle('text-white');
+      document.querySelector('header').classList.toggle('bg-gray-800');
+      document.querySelector('header').classList.toggle('text-white');
+    });
+  </script>
+</body>
+</html>
+
+<!--about section -->
+
+<!-- Hero Section -->
+  <section class="text-center py-20 bg-gradient-to-r from-pink-200 to-purple-300">
+    <h1 class="text-5xl font-bold text-gray-900 mb-4">About <span class="text-pink-600">Fashion Flair Hub</span></h1>
+    <p class="text-lg max-w-2xl mx-auto text-gray-700">More than a brand — we are a movement. Elevating everyday style into something iconic, we connect fashion lovers with the trends, tips, and tools to express themselves.</p>
+  </section>
+
+  
+  <!-- Our Story Section -->
+  <section id="story" class="py-20 bg-white dark:bg-gray-950 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="space-y-6">
+        <h2 class="text-3xl md:text-4xl font-semibold section-heading">Our Story</h2>
+        <p class="text-lg leading-relaxed">Fashion Flair Hub was born from a desire to simplify and enrich the way people engage with fashion. Our founders, a group of style enthusiasts, saw the need for a platform that could bring together top fashion content in one place. From trend analysis to influencer insights, we aim to be your go-to source for fashion discovery.</p>
+      </div>
+      <div class="h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-md hover-effect">
+        <img src="data:image/jpeg;base64,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" alt="Fashion Story" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission Section -->
+  <section id="mission" class="py-20 bg-gray-50 dark:bg-gray-900 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-md hover-effect">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcX42TQWGmXP4kZmfLt66aWo0CD1eNgUvmqq_9bG7fsJDCKIyTHvnju2-F1Idv11N4F4U&usqp=CAU" alt="Fashion Mission" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="space-y-6">
+        <h2 class="text-3xl md:text-4xl font-semibold section-heading">Our Mission</h2>
+        <p class="text-lg leading-relaxed">Our mission is to empower individuals to express themselves through fashion. By curating top-quality content and trends, we provide users with the inspiration and tools they need to stay ahead in the fashion world. We believe in fashion as a form of self-expression and aim to support that journey.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Back to Top -->
+  <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="fixed bottom-5 right-5 z-50 bg-black text-white dark:bg-white dark:text-black p-3 rounded-full shadow-lg back-to-top">↑</button>
+
+  <!-- Scripts -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Cursor AI Dot
+    const dot = document.querySelector(".cursor-dot");
+    document.addEventListener("mousemove", (e) => {
+      gsap.to(dot, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.1,
+        ease: "power2.out"
+      });
+    });
+
+    // Hero Section Animations
+    gsap.from(".hero-title", {
+      y: 50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-text", {
+      y: 30,
+      opacity: 0,
+      duration: 1.5,
+      delay: 0.3,
+      ease: "power3.out"
+    });
+
+    // Floating Hero Title
+    gsap.to(".hero-title", {
+      y: -10,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      duration: 2,
+    });
+
+    // Scroll Animations for Sections
+    gsap.from("#story", {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: "#story",
+        start: "top 80%",
+        scrub: true,
+      },
+    });
+
+    gsap.from("#mission", {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: "#mission",
+        start: "top 80%",
+        scrub: true,
+      },
+    });
+
+    // Enhanced Team Cards Animation
+    gsap.from(".team-card", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: "#team",
+        start: "top 80%",
+        once: true,
+      },
+    });
+
+    // Animate Section Headings with Scale
+    gsap.from(".section-heading", {
+      scale: 0.8,
+      opacity: 0,
+      duration: 1.2,
+      ease: "elastic.out(1, 0.3)",
+      scrollTrigger: {
+        trigger: ".section-heading",
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    // Back to Top Button Animation
+    const backToTop = document.querySelector('.back-to-top');
+    gsap.to(backToTop, {
+      y: -5,
+      repeat: -1,
+      yoyo: true,
+      duration: 1,
+      ease: "power1.inOut"
+    });
+  </script>
+</body>
+</html>
+<!-- Fashion Community Join Section -->
+  <section class="w-auto h-screen flex items-center justify-center bg-gradient-to-r from-pink-400 via-pink-500 to-purple-600 text-white px-4">
+    <div class="text-center max-width">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Join Our Fashion Community</h2>
+      <p class="text-lg md:text-2xl mb-9">
+        Become part of our growing community of fashion enthusiasts and creators. Share your style,
+        discover new trends, and connect with like-minded individuals.
+      </p>
+      <button class="btn-hover-effect relative inline-block px-6 py-3 text-lg border border-white rounded-md font-medium hover:bg-white hover:text-pink-400 transition duration-200">
+        Join Now
+        <span class="absolute top-0 left-0 w-full h-full"></span>
+      </button>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-50 mt-16 pt-12 pb-6 border-t">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand & Social -->
+      <div>
+        <div class="text-2xl font-bold text-pink-600 mb-2">FASHION FLAIR HUB</div>
+        <p class="text-gray-600 mb-4">
+          Your ultimate destination for fashion inspiration and style ideas. Discover the latest trends through curated short videos from across the web.
+        </p>
+        <div class="flex space-x-4 text-2xl text-gray-500">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <div class="font-bold text-lg mb-2">Quick Links</div>
+        <ul class="space-y-2 text-gray-700">
+          <li><a href="#" class="hover:text-pink-600">About Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Contact Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Women's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Men's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Fashion Ideas</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <div class="font-bold text-lg mb-2">Contact Info</div>
+        <ul class="space-y-2 text-gray-700">
+          <li>
+            <span class="text-pink-600 mr-2">&#x1F4CD;</span>
+            123 Fashion Street, Style Avenue, Trend City, 10001
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x260E;</span>
+            +1 (555) 123-4567
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x2709;</span>
+            info@fashionflairhub.com
+          </li>
+        </ul>
+      </div>
+      <!-- Subscribe -->
+      <div>
+        <div class="font-bold text-lg mb-2">Subscribe</div>
+        <p class="text-gray-600 mb-3">Get the latest fashion trends and style ideas delivered to your inbox.</p>
+        <form>
+          <input type="email" placeholder="Your email address" class="w-full border rounded px-3 py-2 mb-2 focus:outline-none" />
+          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-10 border-t pt-4 text-center text-gray-500 text-sm">
+      © 2025 Fashion Flair Hub. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fashion Features</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script> <!-- Icon support -->
+</head>
+<body class="bg-white">
+
+  <!-- Feature Highlights Section -->
+  <section class="py-16 px-6 md:px-20 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+
+        <!-- Trending Styles -->
+        <div class="flex items-start space-x-4">
+          <div class="bg-pink-100 p-4 rounded-full">
+            <i data-lucide="trending-up" class="w-6 h-6 text-pink-600"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Trending Styles</h3>
+            <p class="text-sm text-gray-700">Stay ahead with the latest fashion trends</p>
+          </div>
+        </div>
+
+        <!-- Curated Content -->
+        <div class="flex items-start space-x-4">
+          <div class="bg-pink-100 p-4 rounded-full">
+            <i data-lucide="star" class="w-6 h-6 text-pink-600"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Curated Content</h3>
+            <p class="text-sm text-gray-700">Hand-picked fashion videos from top creators</p>
+          </div>
+        </div>
+
+        <!-- Style Inspiration -->
+        <div class="flex items-start space-x-4">
+          <div class="bg-pink-100 p-4 rounded-full">
+            <i data-lucide="sparkles" class="w-6 h-6 text-pink-600"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Style Inspiration</h3>
+            <p class="text-sm text-gray-700">Get inspired by diverse fashion ideas</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    lucide.createIcons(); // Initialize Lucide icons
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Featured Fashion Videos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <section class="px-6 py-16 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-2">Featured Videos</h2>
+    <p class="text-center text-gray-600 mb-8">Discover our handpicked selection of trending fashion videos from across the web.</p>
+
+    <!-- Filter Buttons -->
+    <div class="flex justify-center gap-4 mb-10 flex-wrap">
+      <button class="filter-btn px-4 py-2 rounded-md border font-medium active bg-white shadow" data-filter="all">All Platforms</button>
+      <button class="filter-btn px-4 py-2 rounded-md border font-medium hover:bg-gray-100" data-filter="instagram">Instagram</button>
+      <button class="filter-btn px-4 py-2 rounded-md border font-medium hover:bg-gray-100" data-filter="youtube">YouTube</button>
+      <button class="filter-btn px-4 py-2 rounded-md border font-medium hover:bg-gray-100" data-filter="facebook">Facebook</button>
+    </div>
+
+    <!-- Videos Grid -->
+    <div id="video-grid" class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Instagram Card -->
+      <div class="video-card group bg-white p-4 rounded-lg shadow platform-instagram">
+        <div class="relative h-48 bg-gray-200 flex items-center justify-center rounded-md">
+          <span class="absolute top-2 right-2 bg-gray-700 text-white text-sm px-2 py-1 rounded">Instagram</span>
+          <i data-lucide="image" class="w-8 h-8 text-gray-400"></i>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-semibold">Summer Fashion Trends 2023</h3>
+          <div class="text-sm text-gray-500 mt-1">450K views</div>
+          <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+            <div class="flex items-center gap-1"><i data-lucide="heart" class="w-4 h-4"></i> 32K</div>
+            <div class="flex items-center gap-1"><i data-lucide="message-circle" class="w-4 h-4"></i> 245</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YouTube Card -->
+      <div class="video-card group bg-white p-4 rounded-lg shadow platform-youtube">
+        <div class="relative h-48 bg-gray-200 flex items-center justify-center rounded-md">
+          <span class="absolute top-2 right-2 bg-gray-700 text-white text-sm px-2 py-1 rounded">Youtube</span>
+          <i data-lucide="image" class="w-8 h-8 text-gray-400"></i>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-semibold">Streetwear Styling Tips</h3>
+          <div class="text-sm text-gray-500 mt-1">320K views</div>
+          <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+            <div class="flex items-center gap-1"><i data-lucide="heart" class="w-4 h-4"></i> 28K</div>
+            <div class="flex items-center gap-1"><i data-lucide="message-circle" class="w-4 h-4"></i> 187</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facebook Card -->
+      <div class="video-card group bg-white p-4 rounded-lg shadow platform-facebook">
+        <div class="relative h-48 bg-gray-200 flex items-center justify-center rounded-md">
+          <span class="absolute top-2 right-2 bg-gray-700 text-white text-sm px-2 py-1 rounded">Facebook</span>
+          <i data-lucide="image" class="w-8 h-8 text-gray-400"></i>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-semibold">Minimalist Wardrobe Essentials</h3>
+          <div class="text-sm text-gray-500 mt-1">280K views</div>
+          <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+            <div class="flex items-center gap-1"><i data-lucide="heart" class="w-4 h-4"></i> 24K</div>
+            <div class="flex items-center gap-1"><i data-lucide="message-circle" class="w-4 h-4"></i> 156</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- JS Filter Logic -->
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.video-card');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+
+        buttons.forEach(btn => btn.classList.remove('active', 'bg-white', 'shadow'));
+        button.classList.add('active', 'bg-white', 'shadow');
+
+        cards.forEach(card => {
+          if (filter === 'all') {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.toggle('hidden', !card.classList.contains(`platform-${filter}`));
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion Categories</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:700,400&display=swap">
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      background: #fafbfc;
+      margin: 0;
+      padding: 0;
+    }
+    .categories-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 60px 0;
+    }
+    .category-card {
+      position: relative;
+      width: 600px;
+      height: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      background: #fff;
+      transition: transform 0.4s cubic-bezier(.4,2,.3,1);
+    }
+    .category-card:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    }
+    .category-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.2) brightness(0.85);
+      transition: filter 0.6s cubic-bezier(.4,2,.3,1);
+      animation: sapFadeIn 1.2s cubic-bezier(.4,2,.3,1);
+    }
+    .category-card:hover .category-image {
+      filter: grayscale(0) brightness(1);
+    }
+    @keyframes sapFadeIn {
+      0% { opacity: 0; transform: scale(1.08);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    .category-content {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: #fff;
+      z-index: 2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .category-title {
+      font-size: 2rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+    .category-desc {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+    /* Codrops-inspired button */
+    .codrops-btn {
+      display: inline-block;
+      padding: 12px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(90deg, #ff5f8f 0%, #ffb86c 100%);
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 16px rgba(255,95,143,0.18);
+      cursor: pointer;
+      transition: background 0.4s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .codrops-btn:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 100%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+      z-index: 0;
+    }
+    .codrops-btn:hover:after {
+      width: 200%;
+      height: 500%;
+    }
+    .codrops-btn span {
+      position: relative;
+      z-index: 1;
+    }
+    .codrops-btn:hover {
+      background: linear-gradient(90deg, #ffb86c 0%, #ff5f8f 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1 style="text-align:center; font-size:2.8rem; margin-top:60px;">Fashion Categories</h1>
+    <p style="text-align:center; color:#555; font-size:1.2rem;">Explore fashion content by category to find exactly what inspires you.</p>
+    <div class="categories-container">
+      <!-- Women's Fashion -->
+      <div class="category-card">
+        <img class="category-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2upgtkWjVdPxhXQoEpcMQ6eQAgG-NfADZ7w&s" alt="Women's Fashion">
+        <div class="category-content">
+          <div class="category-title">Women's Fashion</div>
+          <div class="category-desc">Discover the latest trends and styles</div>
+          <button class="codrops-btn"><span>Explore Women</span></button>
+        </div>
+      </div>
+      <!-- Men's Fashion -->
+      <div class="category-card">
+        <img class="category-image" src="data:image/jpeg;base64,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" alt="Men's Fashion">
+        <div class="category-content">
+          <div class="category-title">Men's Fashion</div>
+          <div class="category-desc">Elevate your style with trending looks</div>
+          <button class="codrops-btn"><span>Explore Men</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+<!--trending videos section-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trending Fashion Videos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF4B91;
+      --secondary: #FF8DC7;
+      --accent: #FFACC7;
+      --background: #FFF0F5;
+      --text: #2D3748;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: var(--background);
+      color: var(--text);
+    }
+
+    .codrops-btn {
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .codrops-btn::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      top: 100%;
+      left: 0;
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    .codrops-btn:hover::before {
+      top: 0;
+    }
+
+    .video-card {
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .gradient-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    }
+  </style>
+</head>
+<body class="p-6">
+
+  <section class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold text-gray-800">Trending Videos</h2>
+      <a href="#" class="text-pink-600 hover:underline flex items-center gap-1">
+        View All
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-pink-600 text-white px-2 py-1 rounded">Instagram</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Summer Fashion Trends 2023</h3>
+          <p class="text-sm text-gray-500">450K views</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Streetwear Styling Tips</h3>
+          <p class="text-sm text-gray-500">320K views</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">Facebook</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Minimalist Wardrobe Essentials</h3>
+          <p class="text-sm text-gray-500">280K views</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-pink-600 text-white px-2 py-1 rounded">Instagram</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Accessorizing Your Outfit</h3>
+          <p class="text-sm text-gray-500">210K views</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Business Casual for Men</h3>
+          <p class="text-sm text-gray-500">190K views</p>
+        </div>
+      </div>
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Business Casual for Men</h3>
+          <p class="text-sm text-gray-500">190K views</p>
+        </div>
+      </div><div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Business Casual for Men</h3>
+          <p class="text-sm text-gray-500">190K views</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">Facebook</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Sustainable Fashion Guide</h3>
+          <p class="text-sm text-gray-500">175K views</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial animation for cards
+    gsap.utils.toArray("[data-gsap]").forEach((el, i) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    // Hover animation for cards
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Button hover animation
+    document.querySelectorAll('.codrops-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "back.out(1.7)"
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!--seasonal section-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Women's Fashion Reels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">Seasonal Style Inspirations</h1>
+      <p class="text-lg sm:text-xl mb-6">Explore women's fashion through the seasons with our curated video .</p>
+      <a href="#spring" class="inline-block bg-white text-pink-600 font-semibold px-6 py-3 rounded-full hover:bg-gray-100">Discover Now</a>
+    </div>
+  </section>
+
+  <!-- Spring Section (Instagram Reels style videos) -->
+  <section id="spring" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">🌸 Spring Style ideas</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <!-- Reel Video -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- Repeat for 4 more reels -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="summer" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">🌸 summer Style ideas</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <!-- Reel Video -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- Repeat for 4 more reels -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="Autumn" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">🌸 Autumn Style ideas</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <!-- Reel Video -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- Repeat for 4 more reels -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id=" winter" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">🌸 winter  Style ideas</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <!-- Reel Video -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- Repeat for 4 more reels -->
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="aspect-[9/16] bg-white rounded-lg shadow overflow-hidden">
+          <video class="w-full h-full object-cover" controls muted loop>
+            <source src="video5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</body>
+</html>
+
+<!-- Footer -->
+  <footer class="bg-gray-50 mt-16 pt-12 pb-6 border-t">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand & Social -->
+      <div>
+        <div class="text-2xl font-bold text-pink-600 mb-2">FASHION FLAIR HUB</div>
+        <p class="text-gray-600 mb-4">
+          Your ultimate destination for fashion inspiration and style ideas. Discover the latest trends through curated short videos from across the web.
+        </p>
+        <div class="flex space-x-4 text-2xl text-gray-500">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <div class="font-bold text-lg mb-2">Quick Links</div>
+        <ul class="space-y-2 text-gray-700">
+          <li><a href="#" class="hover:text-pink-600">About Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Contact Us</a></li>
+          <li><a href="#" class="hover:text-pink-600">Women's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Men's Fashion</a></li>
+          <li><a href="#" class="hover:text-pink-600">Fashion Ideas</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <div class="font-bold text-lg mb-2">Contact Info</div>
+        <ul class="space-y-2 text-gray-700">
+          <li>
+            <span class="text-pink-600 mr-2">&#x1F4CD;</span>
+            123 Fashion Street, Style Avenue, Trend City, 10001
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x260E;</span>
+            +1 (555) 123-4567
+          </li>
+          <li>
+            <span class="text-pink-600 mr-2">&#x2709;</span>
+            info@fashionflairhub.com
+          </li>
+        </ul>
+      </div>
+      <!-- Subscribe -->
+      <div>
+        <div class="font-bold text-lg mb-2">Subscribe</div>
+        <p class="text-gray-600 mb-3">Get the latest fashion trends and style ideas delivered to your inbox.</p>
+        <form>
+          <input type="email" placeholder="Your email address" class="w-full border rounded px-3 py-2 mb-2 focus:outline-none" />
+          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-10 border-t pt-4 text-center text-gray-500 text-sm">
+      © 2025 Fashion Flair Hub. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
 {% endblock content %}
