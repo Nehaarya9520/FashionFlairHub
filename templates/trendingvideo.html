@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trending Fashion Videos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF4B91;
+      --secondary: #FF8DC7;
+      --accent: #FFACC7;
+      --background: #FFF0F5;
+      --text: #2D3748;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: var(--background);
+      color: var(--text);
+    }
+
+    .codrops-btn {
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .codrops-btn::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      top: 100%;
+      left: 0;
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    .codrops-btn:hover::before {
+      top: 0;
+    }
+
+    .video-card {
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .gradient-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    }
+  </style>
+</head>
+<body class="p-6">
+
+  <section class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold text-gray-800">Trending Videos</h2>
+      <a href="#" class="text-pink-600 hover:underline flex items-center gap-1">
+        View All
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-pink-600 text-white px-2 py-1 rounded">Instagram</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Summer Fashion Trends 2023</h3>
+          <p class="text-sm text-gray-500">450K views</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Streetwear Styling Tips</h3>
+          <p class="text-sm text-gray-500">320K views</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">Facebook</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Minimalist Wardrobe Essentials</h3>
+          <p class="text-sm text-gray-500">280K views</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-pink-600 text-white px-2 py-1 rounded">Instagram</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Accessorizing Your Outfit</h3>
+          <p class="text-sm text-gray-500">210K views</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Business Casual for Men</h3>
+          <p class="text-sm text-gray-500">190K views</p>
+        </div>
+      </div>
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Business Casual for Men</h3>
+          <p class="text-sm text-gray-500">190K views</p>
+        </div>
+      </div><div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-red-600 text-white px-2 py-1 rounded">Youtube</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Business Casual for Men</h3>
+          <p class="text-sm text-gray-500">190K views</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="group relative rounded-lg overflow-hidden bg-white shadow-md video-card" data-gsap>
+        <img src="https://via.placeholder.com/300x400?text=Video" class="object-cover w-full h-60" />
+        <span class="absolute top-2 left-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">Facebook</span>
+        <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+          <button class="codrops-btn text-white border border-white hover:bg-white/20 rounded px-4 py-2 flex items-center gap-2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <polygon points="6 3 20 12 6 21 6 3" />
+            </svg>
+            Watch
+          </button>
+        </div>
+        <div class="p-3">
+          <h3 class="text-md font-medium text-gray-800">Sustainable Fashion Guide</h3>
+          <p class="text-sm text-gray-500">175K views</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial animation for cards
+    gsap.utils.toArray("[data-gsap]").forEach((el, i) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    // Hover animation for cards
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Button hover animation
+    document.querySelectorAll('.codrops-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "back.out(1.7)"
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
