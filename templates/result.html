@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Videos for #{{ hashtag }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">
+        {% if hashtag %}
+            Videos for #{{ hashtag }}
+        {% else %}
+            Search Results
+        {% endif %}
+    </h1>
+    
+    <!-- Search form directly on the results page -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="post" action="{% url 'view_videos' %}" class="row g-3 align-items-center">
+                {% csrf_token %}
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-text">#</span>
+                        <input type="text" class="form-control" id="hashtag" name="hashtag" 
+                               placeholder="Enter hashtag" value="{{ hashtag }}" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">Search Videos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        <div class="mt-3">
+            <a href="{% url 'search_video' %}" class="btn btn-primary">Try Again</a>
+        </div>
+    {% elif video_urls %}
+        <div class="row mb-3">
+            <div class="col">
+                <p>Found {{ count }} videos</p>
+            </div>
+            <div class="col text-end">
+                <a href="{% url 'search_video' %}" class="btn btn-primary">New Search</a>
+            </div>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for url in video_urls %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="video-container">
+                                <video controls class="w-100">
+                                    <source src="{{ url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No videos found for #{{ hashtag }}
+        </div>
+        <div class="mt-3">
+            <a href="{% url 'search_video' %}" class="btn btn-primary">Try Another Search</a>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+    }
+    
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}

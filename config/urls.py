@@ -27,16 +27,9 @@ urlpatterns = [
     path('search/', TemplateView.as_view(template_name="search.html"), name="search" ),
     path('trendingvideo/', TemplateView.as_view(template_name="trendingvideo.html"), name="trendingvideo" ),
     path('category/', TemplateView.as_view(template_name="category.html"), name="category" ),
-     path('reelsseasonal/', TemplateView.as_view(template_name="reelsseasonal.html"), name="reelsseasonal" ),
-     path('contact/', TemplateView.as_view(template_name="contact.html"), name="contact" ),
-      path('mens/', TemplateView.as_view(template_name="mens.html"), name="mens" ),
-       path('womens/', TemplateView.as_view(template_name="womens.html"), name="womens" ),
-       path('feedback/', TemplateView.as_view(template_name="feedback.html"), name="feedback" ),
-       path('about/', TemplateView.as_view(template_name="about.html"), name="about" ),
-           
-       
+    path('reelsseasonal/', TemplateView.as_view(template_name="reelsseasonal.html"), name="reelsseasonal" ),
+    path('contact/', TemplateView.as_view(template_name="contact.html"), name="contact" ),
+    path('mens/', TemplateView.as_view(template_name="mens.html"), name="mens" ),
+    path('womens/', TemplateView.as_view(template_name="womens.html"), name="womens" ),
     path('fashion/', include("fashion.urls"), name="fashion" ),#import all files which is create in App
-
 ]
-    
- 
