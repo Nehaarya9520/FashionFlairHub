@@ -31,7 +31,12 @@ urlpatterns = [
      path('contact/', TemplateView.as_view(template_name="contact.html"), name="contact" ),
       path('mens/', TemplateView.as_view(template_name="mens.html"), name="mens" ),
        path('womens/', TemplateView.as_view(template_name="womens.html"), name="womens" ),
+       path('feedback/', TemplateView.as_view(template_name="feedback.html"), name="feedback" ),
+       path('about/', TemplateView.as_view(template_name="about.html"), name="about" ),
+           
+       
     path('fashion/', include("fashion.urls"), name="fashion" ),#import all files which is create in App
 
 ]
     
+ 

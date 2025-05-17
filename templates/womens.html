@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  
+  
   <title>Women's Fashion - Fashion Flair Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Tailwind CSS CDN -->
@@ -12,25 +14,173 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-white text-gray-900">
-  <!-- Header -->
-  <header class="border-b">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between py-4 px-4">
-      <div class="text-pink-600 font-bold text-2xl">FASHION FLAIR HUB</div>
-      <nav class="flex space-x-6 mt-2 md:mt-0">
-        <a href="#" class="hover:text-pink-600">Home</a>
-        <a href="#" class="hover:text-pink-600">Men</a>
-        <a href="#" class="text-pink-600 font-semibold">Women</a>
-        <a href="#" class="hover:text-pink-600">Fashion Ideas</a>
-        <a href="#" class="hover:text-pink-600">About</a>
-        <a href="#" class="hover:text-pink-600">Contact</a>
+  
+
+
+  
+  
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+      <style>
+          .modal-bg {
+              background: rgba(0,0,0,0.5);
+              display: none;
+          }
+          .modal-bg.active {
+              display: flex;
+          }
+          .no-outline:focus {
+              outline: none;
+              box-shadow: none;
+          }
+      </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  
+      <!-- Navbar -->
+      <nav class="bg-white shadow-sm border-b border-pink-100">
+          <div class="max-w-7xl mx-auto px-4 sm:px-8">
+              <div class="flex justify-between items-center h-20">
+                  <!-- Logo -->
+                  <div class="flex-shrink-0">
+                      <span class="text-3xl font-serif font-bold text-pink-600 tracking-wide">FASHION FLAIR HUB</span>
+                  </div>
+                  <!-- Navigation Links -->
+                  <div class="hidden md:flex space-x-8 ml-12">
+                      <a href="#" class="text-pink-600 font-semibold text-lg hover:text-pink-700 border-b-2 border-pink-500 pb-1">Home</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Men</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Women</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Fashion Ideas</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">About</a>
+                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Contact</a>
+                  </div>
+                  <!-- Icons -->
+                  <div class="flex items-center space-x-6 ml-6">
+                      <!-- Moon Icon (Dark mode toggle placeholder) -->
+                      <button class="text-black hover:text-pink-600 focus:outline-none" title="Toggle Dark Mode">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+                          </svg>
+                      </button>
+                      <!-- Search Icon (opens modal) -->
+                      <button id="openModal" class="text-black hover:text-pink-600 focus:outline-none" title="Open Search">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                          </svg>
+                      </button>
+                      <!-- User Icon -->
+                      <button class="text-black hover:text-pink-600 focus:outline-none" title="Profile">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196z"/>
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+          </div>
       </nav>
-      <div class="flex items-center space-x-4 mt-2 md:mt-0">
-        <button class="text-xl"><span>&#9788;</span></button>
-        <button class="text-xl"><span>&#128269;</span></button>
-        <button class="text-xl"><span>&#128100;</span></button>
+  
+      
+  
+      <!-- Modal -->
+      <div id="modalBg" class="modal-bg fixed inset-0 z-50 items-center justify-center">
+          <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-xl mx-auto p-6 relative">
+              <!-- Close Icon -->
+              <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 focus:outline-none">
+                  <!-- X Icon SVG -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+              </button>
+              <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Search Fashion Content</h2>
+              <form class="flex flex-col sm:flex-row items-center gap-3">
+                  <div class="flex flex-1 items-center border-2 border-pink-400 rounded-lg px-3 py-2 bg-white focus-within:ring-2 focus-within:ring-pink-300 transition">
+                      <input
+                          id="searchInput"
+                          type="text"
+                          placeholder="Search for fashion ideas, trends, styles..."
+                          class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 no-outline"
+                      />
+                      <!-- Voice Icon -->
+                      <button type="button" id="voiceBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Voice Search">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v2m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4zm0-2V6a4 4 0 018 0v6a4 4 0 01-8 0z"/>
+                          </svg>
+                      </button>
+                      <!-- Camera Icon -->
+                      <button type="button" id="imageBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Image Search">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h2l2-3h10l2 3h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2zm9 3a4 4 0 100 8 4 4 0 000-8z"/>
+                          </svg>
+                      </button>
+                  </div>
+                  <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition w-full sm:w-auto">Search</button>
+              </form>
+          </div>
       </div>
-    </div>
-  </header>
+  
+      <script>
+          // Modal open/close
+          const openModal = document.getElementById('openModal');
+          const modalBg = document.getElementById('modalBg');
+          const closeModal = document.getElementById('closeModal');
+          const searchInput = document.getElementById('searchInput');
+  
+          openModal.addEventListener('click', () => {
+              modalBg.classList.add('active');
+              setTimeout(() => searchInput.focus(), 100);
+          });
+          closeModal.addEventListener('click', () => {
+              modalBg.classList.remove('active');
+              searchInput.value = '';
+          });
+          // Close modal on background click
+          modalBg.addEventListener('click', (e) => {
+              if (e.target === modalBg) {
+                  modalBg.classList.remove('active');
+                  searchInput.value = '';
+              }
+          });
+  
+          // Search functionality
+          document.querySelector('form').addEventListener('submit', function(e) {
+              e.preventDefault();
+              alert('Text Search: ' + searchInput.value);
+          });
+          document.getElementById('voiceBtn').addEventListener('click', function() {
+              alert('Voice Search initiated');
+          });
+          document.getElementById('imageBtn').addEventListener('click', function() {
+              alert('Image Search initiated');
+          });
+  
+          // Responsive: close modal on ESC
+          document.addEventListener('keydown', function(e) {
+              if (e.key === "Escape") {
+                  modalBg.classList.remove('active');
+                  searchInput.value = '';
+              }
+          });
+      </script>
+  </body>
+  </html>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 via-pink-50 to-white text-gray-900">
+
 
   <!-- Hero Section -->
   <section class="bg-pink-100 py-8">
@@ -65,7 +215,7 @@
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <!-- Card 1 -->
       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=400&q=80" alt="Summer Style Guide" class="object-cover w-full h-full" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJSIWJRuVSiuu35vsn2V0zk9b8hKAFazWlbAGg4TbHUAmcMiGf2qK9ywHwTgZDp2tmzRw&usqp=CAU" alt="Summer Style Guide" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
@@ -80,7 +230,7 @@
       </div>
       <!-- Card 2 -->
       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <img src="data:image/jpeg;base64,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" alt="Office Wear Essentials" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
@@ -95,7 +245,7 @@
       </div>
       <!-- Card 2 -->
       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <img src="https://i.pinimg.com/564x/73/47/d2/7347d20e6059350a44fba0926236c6bc.jpg" alt="Office Wear Essentials" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
@@ -109,7 +259,7 @@
         </div>
       </div><!-- Card 2 -->
       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqDrp2yjSx4EiFnD5iRO9gytwMQW_b-Brj8Q&s" alt="Office Wear Essentials" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
@@ -122,7 +272,7 @@
           </div>
         </div><!-- Card 2 -->
         <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2SS4itItH1WcS6NhriyAudpPLU2KvGWiAE6PafI5weCIueLR2hqTJ0ksglXcNk5eoprw&usqp=CAU" alt="Office Wear Essentials" class="object-cover w-full h-full" />
           <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
             <div <!-- Card 2 -->
               <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
@@ -151,7 +301,7 @@
         </div>
       </div><!-- Card 2 -->
       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMZvIRXeRdi9sMkekqJDTq-GOGCNBjdOa0dQ&s" alt="Office Wear Essentials" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
@@ -166,7 +316,7 @@
       </div>
       <!-- Card 3 -->
       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Accessorizing Tips" class="object-cover w-full h-full" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQz5qv2BYWV3kMK5yUxfjX0Aq8GDFEGd4aF3Kl9syXyjMMQwDxlcoFZQ-rHc0TmZhwkNY&usqp=CAU" alt="Accessorizing Tips" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
@@ -181,7 +331,7 @@
       </div>
        <!-- Card 3 -->
        <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Accessorizing Tips" class="object-cover w-full h-full" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUd3imzNwbd0eCXbmaHDvL5dqHBx0EfIGASgl8fSCZ4jSfm_wP546C3goXXteUE5iCcS4&usqp=CAU" alt="Accessorizing Tips" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
@@ -196,7 +346,7 @@
       </div>
        <!-- Card 3 -->
        <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Accessorizing Tips" class="object-cover w-full h-full" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ19r-gKAJs6mS-DstuRidY-yAyWhMcPvgdyqxZoofgD0DwxeN5QK_wBbLbrWKYsNzH1Gs&usqp=CAU" alt="Accessorizing Tips" class="object-cover w-full h-full" />
         <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
           <div class="flex items-center justify-between mb-2">
             <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
