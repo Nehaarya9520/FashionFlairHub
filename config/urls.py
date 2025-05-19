@@ -29,6 +29,8 @@ urlpatterns = [
     path('category/', TemplateView.as_view(template_name="category.html"), name="category" ),
     path('reelsseasonal/', TemplateView.as_view(template_name="reelsseasonal.html"), name="reelsseasonal" ),
     path('contact/', TemplateView.as_view(template_name="contact.html"), name="contact" ),
+    # Include fashion app URLs for Instagram reels search functionality
+    path('fashion/', include('fashion.urls')),
     path('mens/', TemplateView.as_view(template_name="mens.html"), name="mens" ),
     path('womens/', TemplateView.as_view(template_name="womens.html"), name="womens" ),
     path('fashion/', include("fashion.urls"), name="fashion" ),#import all files which is create in App
