@@ -88,16 +88,19 @@
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                   </svg>
-              </button>
-              <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Search Fashion Content</h2>
-              <form class="flex flex-col sm:flex-row items-center gap-3">
+              </button>              <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Search Fashion Reels</h2>
+              <form class="flex flex-col sm:flex-row items-center gap-3" method="post" action="{% url 'view_videos' %}">
+                  {% csrf_token %}
                   <div class="flex flex-1 items-center border-2 border-pink-400 rounded-lg px-3 py-2 bg-white focus-within:ring-2 focus-within:ring-pink-300 transition">
+                      <span class="text-pink-500 font-bold">#</span>
                       <input
                           id="searchInput"
+                          name="hashtag"
                           type="text"
-                          placeholder="Search for fashion ideas, trends, styles..."
-                          class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 no-outline"/>
-                      
+                          placeholder="Enter hashtag to find reels (e.g. fashion, outfits, style)"
+                          class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 no-outline ml-1"
+                          required
+                      />
                       <!-- Voice Icon -->
                       <button type="button" id="voiceBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Voice Search">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,17 +114,17 @@
                           </svg>
                       </button>
                   </div>
-                  <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition w-full sm:w-auto">Search</button>
+                  <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition w-full sm:w-auto">Find Reels</button>
               </form>
           </div>
       </div>
   
-      <script>
-          // Modal open/close
+      <script>          // Modal open/close
           const openModal = document.getElementById('openModal');
           const modalBg = document.getElementById('modalBg');
           const closeModal = document.getElementById('closeModal');
           const searchInput = document.getElementById('searchInput');
+          const voiceBtn = document.getElementById('voiceBtn');
   
           openModal.addEventListener('click', () => {
               modalBg.classList.add('active');
@@ -136,6 +139,33 @@
               if (e.target === modalBg) {
                   modalBg.classList.remove('active');
                   searchInput.value = '';
+              }
+          });
+          
+          // Voice search functionality
+          voiceBtn.addEventListener('click', () => {
+              if ('webkitSpeechRecognition' in window) {
+                  const recognition = new webkitSpeechRecognition();
+                  recognition.lang = 'en-US';
+                  
+                  recognition.onstart = () => {
+                      voiceBtn.classList.add('text-pink-700');
+                      voiceBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>';
+                  };
+                  
+                  recognition.onresult = (event) => {
+                      const transcript = event.results[0][0].transcript;
+                      searchInput.value = transcript.replace('#', '').trim();
+                  };
+                  
+                  recognition.onend = () => {
+                      voiceBtn.classList.remove('text-pink-700');
+                      voiceBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v2m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4zm0-2V6a4 4 0 018 0v6a4 4 0 01-8 0z"/></svg>';
+                  };
+                  
+                  recognition.start();
+              } else {
+                  alert('Voice search is not supported in your browser. Try Chrome!');
               }
           });
   

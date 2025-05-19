@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from .views import searchVideo, viewVideos
+from .views import searchVideo, viewVideos, viewUserReels, proxy_video, image_search, analyze_image_only
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="index.html"), name="home" ),
     path('search/', searchVideo, name='search_video'),
     path('results/', viewVideos, name='view_videos'),
+    path('user-reels/', viewUserReels, name='view_user_reels'),
+    path('proxy-video/', proxy_video, name='proxy_video'),
+    path('image-search/', image_search, name='image_search'),
+    path('analyze-image/', analyze_image_only, name='analyze_image_only'),
 ]
