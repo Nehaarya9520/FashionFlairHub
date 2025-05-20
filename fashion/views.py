@@ -27,15 +27,15 @@ FASHION_ACCOUNTS = [
 
 # Add these women fashion influencer accounts
 WOMEN_FASHION_ACCOUNTS = [
-    "aashimalakhani",
-    "komal.pandey",
-    "santoshi_shetty",
-    "diipakhosla",
-    "masoom.minawala",
-    "stylebyami",
-    "thestylestate",
-    "aastha_gill",
-    "kritisanon"
+     "aashistyling",
+    "Meghansh07",
+    "fits_withme",
+    # "diipakhosla",
+    # "masoom.minawala",
+    # "stylebyami",
+    # "thestylestate",
+    # "aastha_gill",
+    # "kritisanon"
 ]
 
 # Create your views here.
@@ -399,49 +399,43 @@ def women_fashion_reels(request):
     try:
         all_videos = []
         women_fashion_tags = [
-            'womensfashion', 'womenstyle', 'womenswear', 
-            'womenoutfits', 'womenfashion', 'indianfashion',
-            'womenclothing', 'womensstyle', 'womensweardaily'
-        ]
+            'women']
         
         # Fetch videos from all fashion accounts
-        for username in FASHION_ACCOUNTS + WOMEN_FASHION_ACCOUNTS:
+        for username in WOMEN_FASHION_ACCOUNTS:
             try:
                 # Get reels for this username
                 user_videos = get_instagram_reels_by_username(username)
-                
+                print(len(user_videos))
                 # Filter videos containing women's fashion related hashtags
                 for video in user_videos:
-                    video_hashtags = [tag.lower() for tag in video.get('hashtags', [])]
-                    if any(tag in video_hashtags for tag in women_fashion_tags):
-                        video['matching_tags'] = [
-                            tag for tag in video_hashtags 
-                            if tag in women_fashion_tags
-                        ]
-                        video['username'] = username
-                        all_videos.append(video)
+                    # video_hashtags = [tag.lower() for tag in video.get('hashtags', [])]
+                    # if any(tag in video_hashtags for tag in women_fashion_tags):
+                    #     video['matching_tags'] = [
+                    #         tag for tag in video_hashtags
+                    #         if tag in women_fashion_tags
+                    #     ]
+                    #     video['username'] = username
+                    all_videos.append(video)
                 
             except Exception as e:
                 print(f"Error fetching videos from {username}: {e}")
                 continue
-
+        print(len(all_videos))
         # Sort videos by engagement (likes + views)
-        sorted_videos = sorted(
-            all_videos,
-            key=lambda x: x.get('like_count', 0) + x.get('view_count', 0),
-            reverse=True
-        )
+        # sorted_videos = sorted(
+        #     all_videos,
+        #     key=lambda x: x.get('like_count', 0) + x.get('view_count', 0),
+        #     reverse=True
+        # )
 
         # Extract video URLs for compatibility
-        video_urls = [video['video_url'] for video in sorted_videos]
-        print(video_urls)
-        return render(request, 'result.html', {
-            'videos': sorted_videos,
-            'video_urls': video_urls,
-            'hashtag': 'Women\'s Fashion',
-            'count': len(sorted_videos),
-            'is_women_fashion': True,
-            'matched_hashtags': women_fashion_tags
+        # video_urls = [video['video_url'] for video in sorted_videos]
+        # print(video_urls)
+        return render(request, 'womens.html', {
+            'videos': all_videos,
+            'video_urls': all_videos,
+            'count': len(all_videos)
         })
         
     except Exception as e:

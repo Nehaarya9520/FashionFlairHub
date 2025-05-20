@@ -603,42 +603,5 @@
     </div>
     {% endif %}
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {% for video in videos %}
-            <div class="bg-white rounded-lg shadow-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-xl">
-                <div class="aspect-[9/16] relative">
-                    <video class="w-full h-full object-cover" controls muted loop>
-                        <source src="{{ video.video_url }}" type="video/mp4">
-                    </video>
-                    {% if video.matching_tags %}
-                        <div class="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
-                            {% for tag in video.matching_tags|slice:":3" %}
-                                <span class="bg-black/60 text-white text-xs px-2 py-1 rounded">
-                                    #{{ tag }}
-                                </span>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center">
-                            <span class="text-pink-600">
-                                <i class="fas fa-heart mr-1"></i>
-                                {{ video.like_count|default:"0" }}
-                            </span>
-                        </div>
-                        <span class="text-gray-500 text-sm">
-                            {{ video.view_count|default:"0" }} views
-                        </span>
-                    </div>
-                </div>
-            </div>
-        {% empty %}
-            <div class="col-span-full text-center py-8">
-                <p class="text-gray-500">No women's fashion videos found.</p>
-            </div>
-        {% endfor %}
-    </div>
 </div>
 {% endblock %}

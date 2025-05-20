@@ -27,4 +27,5 @@ urlpatterns = [
     path('image-search/', image_search, name='image_search'),
     path('analyze-image/', analyze_image_only, name='analyze_image_only'),
     path('womens/', women_fashion_reels, name='womens_fashion'),
+    path('mens/', women_fashion_reels, name='mens_fashion'),
 ]

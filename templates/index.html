@@ -1,4 +1,4 @@
-      {% extends 'layout.html' %}
+{% extends 'layout.html' %}
 
 {% block title %}
   <title>FashionFlairHub - Home</title>
@@ -340,7 +340,7 @@
           <div class="category-content">
             <div class="category-title">Women's Fashion</div>
             <div class="category-desc">Discover the latest trends and styles</div>
-            <button class="codrops-btn"><span>Explore Women</span></button>
+            <a href="{% url 'womens_fashion' %}" class="codrops-btn"><span>Explore Women</span></a>
           </div>
         </div>
         <!-- Men's Fashion -->
@@ -349,7 +349,7 @@
           <div class="category-content">
             <div class="category-title">Men's Fashion</div>
             <div class="category-desc">Elevate your style with trending looks</div>
-            <button class="codrops-btn"><span>Explore Men</span></button>
+            <a href="{% url 'mens_fashion' %}" class="codrops-btn"><span>Explore Men</span></a>
           </div>
         </div>
       </div>
