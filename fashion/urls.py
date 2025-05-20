@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from .views import searchVideo, viewVideos, viewUserReels, proxy_video, image_search, analyze_image_only, women_fashion_reels
+from .views import searchVideo, viewVideos, viewUserReels, proxy_video, image_search, analyze_image_only, women_fashion_reels, men_fashion_reels
 
 urlpatterns = [
     path('search/', searchVideo, name='search_video'),
@@ -27,5 +27,5 @@ urlpatterns = [
     path('image-search/', image_search, name='image_search'),
     path('analyze-image/', analyze_image_only, name='analyze_image_only'),
     path('womens/', women_fashion_reels, name='womens_fashion'),
-    path('mens/', women_fashion_reels, name='mens_fashion'),
+    path('mens/', men_fashion_reels, name='mens_fashion'),
 ]
