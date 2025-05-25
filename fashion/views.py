@@ -6,6 +6,9 @@ import json
 import re
 import requests
 from itertools import chain
+from google import genai
+from PIL import Image
+import io
 from .socialScrapper import (
     get_instagram_reels_by_username,
     get_instagram_reels_by_username_and_hashtags,
@@ -36,6 +39,19 @@ WOMEN_FASHION_ACCOUNTS = [
     # "thestylestate",
     # "aastha_gill",
     # "kritisanon"
+]
+
+# Add these men fashion influencer accounts in the constants section at the top
+MEN_FASHION_ACCOUNTS = [
+    "vouguemann",
+    "menlifestylestudio", 
+    "mensoutfitsvision",
+    "kikalateefff",
+    "menswithstreetstyle",
+    "mensfashionreview",
+    "thedapperedman",
+    "menwithclass",
+    "menwithstyle"
 ]
 
 # Create your views here.
@@ -337,15 +353,14 @@ def analyze_image_with_gemini(image_file):
     Returns:
         list: Fashion-related keywords extracted from the image
     """
-    import google.generativeai as genai
-    from PIL import Image
-    import io
+    
     
     # Configure API key
-    genai.configure(api_key="YOUR_GEMINI_API_KEY")  # Replace with your actual API key
+    # genai.configure(api_key="AIzaSyDy1bzPfSkaPih1dL5AtcSXxbjxJhc5ai8")  # Replace with your actual API key
     
     # Set up the model
-    model = genai.GenerativeModel('gemini-pro-vision')
+    # model = genai.GenerativeModel('gemini-pro-vision')
+    client = genai.Client(api_key="AIzaSyDy1bzPfSkaPih1dL5AtcSXxbjxJhc5ai8")
     
     try:
         # Read and process the image
@@ -364,7 +379,14 @@ def analyze_image_with_gemini(image_file):
         """
         
         # Generate content with the image and prompt
-        response = model.generate_content([prompt, img])
+        # response = model.generate_content([prompt, img])
+
+        my_file = client.files.upload(file=image_file)
+
+        response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[my_file, prompt],
+        )
         
         # Extract and process keywords
         keywords_text = response.text.strip()
@@ -444,4 +466,53 @@ def women_fashion_reels(request):
         print(traceback.format_exc())
         return render(request, 'result.html', {
             'error': f'Error fetching women\'s fashion videos: {str(e)}'
+        })
+
+def men_fashion_reels(request):
+    """
+    View function to display men's fashion reels
+    """
+    try:
+        all_videos = []
+        men_fashion_tags = [
+            'men', 'menswear', 'mensfashion', 'mensstyle', 'menstyle'
+        ]
+        
+        # Fetch videos from men's fashion accounts
+        for username in MEN_FASHION_ACCOUNTS:
+            try:
+                # Get reels for this username
+                user_videos = get_instagram_reels_by_username(username)
+                print(f"Got {len(user_videos)} videos from {username}")
+                
+                # Add username and other metadata
+                for video in user_videos:
+                    video['username'] = username
+                    all_videos.append(video)
+                
+            except Exception as e:
+                print(f"Error fetching videos from {username}: {e}")
+                continue
+        
+        print(f"Total men's fashion videos: {len(all_videos)}")
+        
+        # Sort videos by engagement (likes + views) - optional
+        sorted_videos = sorted(
+            all_videos,
+            key=lambda x: (x.get('like_count', 0) + x.get('view_count', 0)),
+            reverse=True
+        )
+        
+        return render(request, 'mens.html', {
+            'videos': sorted_videos,
+            'video_urls': sorted_videos,
+            'count': len(sorted_videos)
+        })
+        
+    except Exception as e:
+        import traceback
+        print(f"Error in men_fashion_reels: {str(e)}")
+        print(traceback.format_exc())
+        return render(request, 'result.html', {
+            'error': f'Error fetching men\'s fashion videos: {str(e)}'
         })

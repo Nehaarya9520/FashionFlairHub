@@ -1,498 +1,283 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- GSAP CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-white text-gray-900">
-  
+{% extends 'base.html' %}
 
+{% block title %}Men's Fashion | Fashion Flair Hub{% endblock %}
 
-  
-  
-      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-      <style>
-          .modal-bg {
-              background: rgba(0,0,0,0.5);
-              display: none;
-          }
-          .modal-bg.active {
-              display: flex;
-          }
-          .no-outline:focus {
-              outline: none;
-              box-shadow: none;
-          }
-      </style>
-  </head>
-  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  
-      <!-- Navbar -->
-      <nav class="bg-white shadow-sm border-b border-pink-100">
-          <div class="max-w-7xl mx-auto px-4 sm:px-8">
-              <div class="flex justify-between items-center h-20">
-                  <!-- Logo -->
-                  <div class="flex-shrink-0">
-                      <span class="text-3xl font-serif font-bold text-pink-600 tracking-wide">FASHION FLAIR HUB</span>
-                  </div>
-                  <!-- Navigation Links -->
-                  <div class="hidden md:flex space-x-8 ml-12">
-                      <a href="#" class="text-pink-600 font-semibold text-lg hover:text-pink-700 border-b-2 border-pink-500 pb-1">Home</a>
-                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Men</a>
-                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Women</a>
-                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Fashion Ideas</a>
-                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">About</a>
-                      <a href="#" class="text-black font-semibold text-lg hover:text-pink-600">Contact</a>
-                  </div>
-                  <!-- Icons -->
-                  <div class="flex items-center space-x-6 ml-6">
-                      <!-- Moon Icon (Dark mode toggle placeholder) -->
-                      <button class="text-black hover:text-pink-600 focus:outline-none" title="Toggle Dark Mode">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
-                          </svg>
-                      </button>
-                      <!-- Search Icon (opens modal) -->
-                      <button id="openModal" class="text-black hover:text-pink-600 focus:outline-none" title="Open Search">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                          </svg>
-                      </button>
-                      <!-- User Icon -->
-                      <button class="text-black hover:text-pink-600 focus:outline-none" title="Profile">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196z"/>
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                          </svg>
-                      </button>
-                  </div>
-              </div>
-          </div>
-      </nav>
-  
-      
-  
-      <!-- Modal -->
-      <div id="modalBg" class="modal-bg fixed inset-0 z-50 items-center justify-center">
-          <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-xl mx-auto p-6 relative">
-              <!-- Close Icon -->
-              <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 focus:outline-none">
-                  <!-- X Icon SVG -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                  </svg>
-              </button>
-              <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Search Fashion Content</h2>
-              <form class="flex flex-col sm:flex-row items-center gap-3">
-                  <div class="flex flex-1 items-center border-2 border-pink-400 rounded-lg px-3 py-2 bg-white focus-within:ring-2 focus-within:ring-pink-300 transition">
-                      <input
-                          id="searchInput"
-                          type="text"
-                          placeholder="Search for fashion ideas, trends, styles..."
-                          class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 no-outline"
-                      />
-                      <!-- Voice Icon -->
-                      <button type="button" id="voiceBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Voice Search">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v2m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4zm0-2V6a4 4 0 018 0v6a4 4 0 01-8 0z"/>
-                          </svg>
-                      </button>
-                      <!-- Camera Icon -->
-                      <button type="button" id="imageBtn" class="ml-2 text-pink-500 hover:text-pink-700" title="Image Search">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h2l2-3h10l2 3h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2zm9 3a4 4 0 100 8 4 4 0 000-8z"/>
-                          </svg>
-                      </button>
-                  </div>
-                  <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition w-full sm:w-auto">Search</button>
-              </form>
-          </div>
-      </div>
-  
-      <script>
-          // Modal open/close
-          const openModal = document.getElementById('openModal');
-          const modalBg = document.getElementById('modalBg');
-          const closeModal = document.getElementById('closeModal');
-          const searchInput = document.getElementById('searchInput');
-  
-          openModal.addEventListener('click', () => {
-              modalBg.classList.add('active');
-              setTimeout(() => searchInput.focus(), 100);
-          });
-          closeModal.addEventListener('click', () => {
-              modalBg.classList.remove('active');
-              searchInput.value = '';
-          });
-          // Close modal on background click
-          modalBg.addEventListener('click', (e) => {
-              if (e.target === modalBg) {
-                  modalBg.classList.remove('active');
-                  searchInput.value = '';
-              }
-          });
-  
-          // Search functionality
-          document.querySelector('form').addEventListener('submit', function(e) {
-              e.preventDefault();
-              alert('Text Search: ' + searchInput.value);
-          });
-          document.getElementById('voiceBtn').addEventListener('click', function() {
-              alert('Voice Search initiated');
-          });
-          document.getElementById('imageBtn').addEventListener('click', function() {
-              alert('Image Search initiated');
-          });
-  
-          // Responsive: close modal on ESC
-          document.addEventListener('keydown', function(e) {
-              if (e.key === "Escape") {
-                  modalBg.classList.remove('active');
-                  searchInput.value = '';
-              }
-          });
-      </script>
-  </body>
-  </html>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+{% block content %}
+<style>
+    /* Header styling */
+    .page-header {
+        background: linear-gradient(to right, #E3F2FD, #BBDEFB);
+        padding: 2rem 0;
+        margin-bottom: 2rem;
     }
-    .hero-bg {
-      background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
+    
+    /* Video grid layout */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
     }
-  </style>
-</head>
+    
+    @media (min-width: 576px) {
+        .video-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .video-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    @media (min-width: 992px) {
+        .video-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    /* Video card styling */
+    .video-card {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fff;
+    }
+    
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+    
+    .video-container {
+        position: relative;
+        aspect-ratio: 9/16;
+    }
+    
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .video-tags {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .video-tag {
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+    }
+    
+    .video-info {
+        padding: 1rem;
+    }
+    
+    .video-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Category pills */
+    .category-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+    
+    .category-pill {
+        background-color: #BBDEFB;
+        color: #0D47A1;
+        border: none;
+        border-radius: 2rem;
+        padding: 0.5rem 1.25rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .category-pill:hover, .category-pill.active {
+        background-color: #1976D2;
+        color: white;
+    }
+    
+    .section-title {
+        position: relative;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+    }
+    
+    .section-title::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background-color: #e0e0e0;
+        margin-left: 1rem;
+    }
+</style>
 
-  <!-- Hero Section -->
-  <section class="bg-pink-100 py-8">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-2">Men's Fashion</h1>
-      <p class="text-gray-700">Discover the latest men's fashion trends, style tips, and inspiration through curated short videos.</p>
+<!-- Page Header -->
+<div class="page-header text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-primary">Men's Fashion</h1>
+        <p class="lead">Discover the latest trends, outfits, and style inspirations for men</p>
     </div>
-  </section>
+</div>
 
-  
-  <!-- Filter and Tabs -->
-  <section class="container mx-auto px-4 mt-8">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-      <div class="mb-2 md:mb-0 text-gray-700">Showing 5 videos</div>
-      <div class="flex items-center space-x-4">
-        <div class="flex space-x-2 bg-gray-100 rounded">
-          <button class="px-3 py-1 font-semibold border-b-2 border-black">All Platforms</button>
-          <button class="px-3 py-1 text-gray-500 hover:text-black">Instagram</button>
-          <button class="px-3 py-1 text-gray-500 hover:text-black">YouTube</button>
-          <button class="px-3 py-1 text-gray-500 hover:text-black">Facebook</button>
-        </div>
-        <div class="relative">
-          <select class="border rounded px-3 py-1 focus:outline-none">
-            <option>Trending</option>
-            <option>Newest</option>
-            <option>Most Viewed</option>
-          </select>
-        </div>
-      </div>
+<div class="container">
+    <!-- Category filters -->
+    <div class="category-pills">
+        <button class="category-pill active">All</button>
+        <button class="category-pill">Suits</button>
+        <button class="category-pill">Casual</button>
+        <button class="category-pill">Formal</button>
+        <button class="category-pill">Streetwear</button>
+        <button class="category-pill">Accessories</button>
+        <button class="category-pill">Seasonal</button>
     </div>
-
-    <!-- Instagram-Style Video Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <!-- Card 1 -->
-      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="data:image/jpeg;base64,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" alt="Summer Style Guide" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-            <span class="text-white text-xs">450K views</span>
-          </div>
-          <div class="text-white font-semibold">Summer Style Guide</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>35K <span class="ml-1">&#9825;</span></span>
-            <span>245 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1HoqCf1VSRjZvSix-hZeiOjUwsbNKkgPvxGPQAw3MRXeXJUkh0Z5CvxcmrFLo2epudkE&usqp=CAU" alt="Office Wear Essentials" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-            <span class="text-white text-xs">280K views</span>
-          </div>
-          <div class="text-white font-semibold">Office Wear Essentials</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>22K <span class="ml-1">&#9825;</span></span>
-            <span>156 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjEVuMrvOj8r4JFDLwBF8YUy-rAAcSqj7HKQ&s" alt="Office Wear Essentials" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-            <span class="text-white text-xs">280K views</span>
-          </div>
-          <div class="text-white font-semibold">Office Wear Essentials</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>22K <span class="ml-1">&#9825;</span></span>
-            <span>156 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div><!-- Card 2 -->
-      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRztO9QUvxM0_mMJUbhqHHFP0dqVwvaK0GSPg&s" alt="Office Wear Essentials" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-            <span class="text-white text-xs">280K views</span>
-          </div>
-          <div class="text-white font-semibold">Office Wear Essentials</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>22K <span class="ml-1">&#9825;</span></span>
-            <span>156 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div><!-- Card 2 -->
-        <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8KzUSzadLOTq7Om-zlRtp1pk6GdsHWxXqtP9Gf6lLdtp2Vmq_XGrQnP1npqM3xEozmnw&usqp=CAU" alt="Office Wear Essentials" class="object-cover w-full h-full" />
-          <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-            <div <!-- Card 2 -->
-              <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Office Wear Essentials" class="object-cover w-full h-full" />
-                <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-                    <span class="text-white text-xs">280K views</span>
-                  </div>
-                  <div class="text-white font-semibold">Office Wear Essentials</div>
-                  <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-                    <span>22K <span class="ml-1">&#9825;</span></span>
-                    <span>156 <span class="ml-1">&#128172;</span></span>
-                  </div>
+    
+    <!-- Latest Videos -->
+    <div class="mb-5">
+        <h2 class="section-title">
+            <i class="fas fa-film text-danger me-2"></i> Latest Fashion Videos
+        </h2>
+        
+        <div class="video-grid">
+            {% for video in videos %}
+                <div class="video-card">
+                    <div class="video-container">
+                        <video class="w-100 h-100 object-fit-cover" controls muted preload="metadata">
+                            <source src="{{ video.video_url }}" type="video/mp4">
+                        </video>
+                        {% if video.hashtags %}
+                            <div class="video-tags">
+                                {% for tag in video.hashtags|slice:":3" %}
+                                    <span class="video-tag">
+                                        #{{ tag }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="video-info">
+                        <div class="video-stats">
+                            <div class="d-flex align-items-center">
+                                <span class="text-danger">
+                                    <i class="fas fa-heart me-1"></i>
+                                    {{ video.like_count|default:"0" }}
+                                </span>
+                            </div>
+                            <span class="text-muted small">
+                                {{ video.view_count|default:"0" }} views
+                            </span>
+                        </div>
+                    </div>
                 </div>
-              </div>="flex items-center justify-between mb-2">
-              <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-              <span class="text-white text-xs">280K views</span>
-            </div>
-            <div class="text-white font-semibold">Office Wear Essentials</div>
-            <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-              <span>22K <span class="ml-1">&#9825;</span></span>
-              <span>156 <span class="ml-1">&#128172;</span></span>
-            </div>
-          </div>
+            {% empty %}
+                <div class="col-12 text-center py-5">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        No men's fashion videos found.
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSftPaHcMCYwjJtN0tVs2gu8tjZ15dl28Av3okxj1y8kYo0ZNp1liTarsBoAjI_t_pjoHM&usqp=CAU" alt="Office Wear Essentials" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">YouTube</span>
-            <span class="text-white text-xs">280K views</span>
-          </div>
-          <div class="text-white font-semibold">Office Wear Essentials</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>22K <span class="ml-1">&#9825;</span></span>
-            <span>156 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE5uu8XcFIgP6URQWznn2mtwERY67lEINqPg&s" alt="Accessorizing Tips" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
-            <span class="text-white text-xs">195K views</span>
-          </div>
-          <div class="text-white font-semibold">styleTips</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>18K <span class="ml-1">&#9825;</span></span>
-            <span>132 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div>
-       <!-- Card 3 -->
-       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnpDsY6FSPYXUkwDiQgEjBNAQKW4UGhdivYA&s" alt="Accessorizing Tips" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
-            <span class="text-white text-xs">195K views</span>
-          </div>
-          <div class="text-white font-semibold">styleTips</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>18K <span class="ml-1">&#9825;</span></span>
-            <span>132 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div>
-       <!-- Card 3 -->
-       <div class="relative group aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQG-MrZBUhhfcW6QsQumJKWhgliZsbizxrfA&s" alt="Accessorizing Tips" class="object-cover w-full h-full" />
-        <div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
-          <div class="flex items-center justify-between mb-2">
-            <span class="bg-black text-white text-xs px-2 py-1 rounded">Instagram</span>
-            <span class="text-white text-xs">195K views</span>
-          </div>
-          <div class="text-white font-semibold">styleTips</div>
-          <div class="flex items-center text-gray-200 text-xs mt-1 space-x-4">
-            <span>18K <span class="ml-1">&#9825;</span></span>
-            <span>132 <span class="ml-1">&#128172;</span></span>
-          </div>
-        </div>
-      </div>
-      <!-- Add more cards as needed -->
     </div>
-  </section>
-
-  <section class="py-16">
-    <h2 class="text-4xl font-bold text-center mb-2">Featured Men Fashion Creators</h2>
-    <p class="text-center text-gray-600 mb-10">Follow these trending fashion creators for daily inspiration and style tips.</p>
-    <div id="creatorsGrid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 px-4">
-      <!-- Creator Card 1 -->
-      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
-        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
-          <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Creator 1" class="w-full h-full object-cover" />
+    
+    <!-- Fashion tips -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb text-warning me-2"></i> Style Tips for Men
+            </h2>
         </div>
-        <div class="text-lg font-semibold">Creator 1</div>
-        <div class="text-gray-500 text-sm mb-3">@creator1</div>
-        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
-      </div>
-      <!-- Creator Card 2 -->
-      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
-        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
-          <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Creator 2" class="w-full h-full object-cover" />
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Suit Styling</h5>
+                    <p class="card-text">Master the art of suit styling with these essential tips for a sharp, professional look.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
         </div>
-        <div class="text-lg font-semibold">Creator 2</div>
-        <div class="text-gray-500 text-sm mb-3">@creator2</div>
-        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
-      </div>
-      <!-- Creator Card 3 -->
-      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
-        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
-          <img src="https://randomuser.me/api/portraits/men/13.jpg" alt="Creator 3" class="w-full h-full object-cover" />
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Casual Cool</h5>
+                    <p class="card-text">Elevate your everyday casual style with these simple but effective fashion techniques.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
         </div>
-        <div class="text-lg font-semibold">Creator 3</div>
-        <div class="text-gray-500 text-sm mb-3">@creator3</div>
-        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
-      </div>
-      <!-- Creator Card 4 -->
-      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
-        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
-          <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="Creator 4" class="w-full h-full object-cover" />
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Accessory Essentials</h5>
+                    <p class="card-text">Learn how watches, belts, and other accessories can transform your entire outfit.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
         </div>
-        <div class="text-lg font-semibold">Creator 4</div>
-        <div class="text-gray-500 text-sm mb-3">@creator4</div>
-        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
-      </div>
-      <!-- Creator Card 5 -->
-      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
-        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
-          <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Creator 5" class="w-full h-full object-cover" />
-        </div>
-        <div class="text-lg font-semibold">Creator 5</div>
-        <div class="text-gray-500 text-sm mb-3">@creator5</div>
-        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
-      </div>
-      <!-- Creator Card 6 -->
-      <div class="creator-card flex flex-col items-center bg-white rounded-xl shadow-md p-6 transition-transform">
-        <div class="w-24 h-24 rounded-full border-4 border-pink-400 flex items-center justify-center mb-4 overflow-hidden">
-          <img src="https://randomuser.me/api/portraits/men/16.jpg" alt="Creator 6" class="w-full h-full object-cover" />
-        </div>
-        <div class="text-lg font-semibold">Creator 6</div>
-        <div class="text-gray-500 text-sm mb-3">@creator6</div>
-        <button class="px-4 py-1 bg-white border border-gray-300 rounded hover:bg-pink-500 hover:text-white transition">Follow</button>
-      </div>
     </div>
-  </section>
+    
+    <!-- Fashion Influencers -->
+    <div class="mb-5">
+        <h2 class="section-title">
+            <i class="fas fa-users text-info me-2"></i> Style Influencers
+        </h2>
+        
+        <div class="row">
+            {% for i in "12345"|make_list %}
+                <div class="col-6 col-md-4 col-lg-2 mb-4">
+                    <div class="text-center">
+                        <img src="https://ui-avatars.com/api/?name=Style+Master+{{ i }}&background=random" 
+                             class="rounded-circle img-thumbnail mb-2" 
+                             alt="Style Influencer" 
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <h6 class="mb-0">Style Master</h6>
+                        <p class="text-muted small">@stylemaster{{ i }}</p>
+                        <button class="btn btn-sm btn-outline-primary">Follow</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
-  <script>
-    // GSAP animation for creator cards
-    window.addEventListener('DOMContentLoaded', () => {
-      gsap.from(".creator-card", {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out"
-      });
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category pill selection
+        const pills = document.querySelectorAll('.category-pill');
+        pills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                // Remove active class from all pills
+                pills.forEach(p => p.classList.remove('active'));
+                // Add active class to clicked pill
+                this.classList.add('active');
+            });
+        });
+        
+        // No autoplay for videos
+        // Remove the code that was previously observing videos and playing them automatically
     });
-  </script>
-
-  <!-- Footer -->
-  <footer class="bg-gray-50 mt-16 pt-12 pb-6 border-t">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
-      <!-- Brand & Social -->
-      <div>
-        <div class="text-2xl font-bold text-pink-600 mb-2">FASHION FLAIR HUB</div>
-        <p class="text-gray-600 mb-4">
-          Your ultimate destination for fashion inspiration and style ideas. Discover the latest trends through curated short videos from across the web.
-        </p>
-        <div class="flex space-x-4 text-2xl text-gray-500">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-      <!-- Quick Links -->
-      <div>
-        <div class="font-bold text-lg mb-2">Quick Links</div>
-        <ul class="space-y-2 text-gray-700">
-          <li><a href="#" class="hover:text-pink-600">About Us</a></li>
-          <li><a href="#" class="hover:text-pink-600">Contact Us</a></li>
-          <li><a href="#" class="hover:text-pink-600">Women's Fashion</a></li>
-          <li><a href="#" class="hover:text-pink-600">Men's Fashion</a></li>
-          <li><a href="#" class="hover:text-pink-600">Fashion Ideas</a></li>
-        </ul>
-      </div>
-      <!-- Contact Info -->
-      <div>
-        <div class="font-bold text-lg mb-2">Contact Info</div>
-        <ul class="space-y-2 text-gray-700">
-          <li>
-            <span class="text-pink-600 mr-2">&#x1F4CD;</span>
-            123 Fashion Street, Style Avenue, Trend City, 10001
-          </li>
-          <li>
-            <span class="text-pink-600 mr-2">&#x260E;</span>
-            +1 (555) 123-4567
-          </li>
-          <li>
-            <span class="text-pink-600 mr-2">&#x2709;</span>
-            info@fashionflairhub.com
-          </li>
-        </ul>
-      </div>
-      <!-- Subscribe -->
-      <div>
-        <div class="font-bold text-lg mb-2">Subscribe</div>
-        <p class="text-gray-600 mb-3">Get the latest fashion trends and style ideas delivered to your inbox.</p>
-        <form>
-          <input type="email" placeholder="Your email address" class="w-full border rounded px-3 py-2 mb-2 focus:outline-none" />
-          <button type="submit" class="w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">Subscribe</button>
-        </form>
-      </div>
-    </div>
-    <div class="mt-10 border-t pt-4 text-center text-gray-500 text-sm">
-      © 2025 Fashion Flair Hub. All rights reserved.
-    </div>
-  </footer>
-</body>
-</html
-
+</script>
+{% endblock %}
