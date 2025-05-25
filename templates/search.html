@@ -57,11 +57,21 @@
                                         <img id="image-preview" class="img-fluid rounded" alt="Preview">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Analyze Image & Find Reels</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" id="analyze-image-btn">Analyze Image</button>
                             </form>
                             
                             <!-- Keyword Results Section (hidden by default) -->
                             <div id="keyword-results" class="mt-4 d-none"></div>
+                            
+                            <!-- Find Reels Form (hidden by default) -->
+                            <form method="post" action="{% url 'image_search' %}" enctype="multipart/form-data" id="find-reels-form" class="d-none mt-3">
+                                {% csrf_token %}
+                                <input type="hidden" id="extracted-image" name="image">
+                                <input type="hidden" id="extracted-keywords" name="extracted_keywords">
+                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                    <i class="fas fa-search me-2"></i> Find Reels with These Keywords
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -140,6 +150,9 @@
             return;
         }
         
+        // Hide find reels form if it was previously shown
+        document.querySelector('#find-reels-form').classList.add('d-none');
+        
         // Show loading indicator
         document.querySelector('#keyword-results').innerHTML = 
             '<div class="text-center py-3"><div class="spinner-border text-primary" role="status">' +
@@ -152,6 +165,13 @@
         formData.append('image', imageInput.files[0]);
         formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
         
+        // Store the image data for later use in the Find Reels form
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('extracted-image').setAttribute('value', e.target.result);
+        }
+        reader.readAsDataURL(imageInput.files[0]);
+        
         // Send AJAX request
         fetch('{% url "analyze_image_only" %}', {
             method: 'POST',
@@ -163,6 +183,9 @@
                 document.querySelector('#keyword-results').innerHTML = 
                     `<div class="alert alert-danger">${data.error}</div>`;
             } else {
+                // Store the extracted keywords for the Find Reels form
+                document.getElementById('extracted-keywords').value = JSON.stringify(data.keywords);
+                
                 // Display keywords
                 let keywordsHTML = '<div class="card border-primary">' +
                     '<div class="card-header bg-primary text-white">AI Image Analysis Results</div>' +
@@ -175,16 +198,32 @@
                 });
                 
                 keywordsHTML += '</div>' +
-                    '<p class="mb-0">Click "Find Reels" to search for videos matching these keywords.</p>' +
                     '</div></div>';
                     
                 document.querySelector('#keyword-results').innerHTML = keywordsHTML;
+                
+                // Show the Find Reels form
+                document.querySelector('#find-reels-form').classList.remove('d-none');
             }
         })
         .catch(error => {
             document.querySelector('#keyword-results').innerHTML = 
                 `<div class="alert alert-danger">Error analyzing image: ${error.message}</div>`;
         });
+    });
+    
+    // Handle the Find Reels form submission
+    document.querySelector('#find-reels-form').addEventListener('submit', function(e) {
+        // The form will submit normally to the image_search URL
+        // We've already populated the extracted-image and extracted-keywords hidden fields
+        
+        // Show a loading message below the button if desired
+        const loadingMsg = document.createElement('div');
+        loadingMsg.className = 'text-center mt-2';
+        loadingMsg.innerHTML = '<div class="spinner-border spinner-border-sm text-success" role="status"></div> ' +
+                              '<span>Finding reels, please wait...</span>';
+        
+        this.appendChild(loadingMsg);
     });
 </script>
 {% endblock %}

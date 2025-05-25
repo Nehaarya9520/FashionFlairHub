@@ -238,13 +238,31 @@ def image_search(request):
         try:
             image_file = request.FILES['image']
             
-            # Save image temporarily for display (optional)
+            # Create temp directory if it doesn't exist
+            import os
+            temp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'temp_uploads')
+            os.makedirs(temp_dir, exist_ok=True)
+            
+            # Generate a unique filename
+            import uuid
+            file_extension = os.path.splitext(image_file.name)[1].lower()
+            unique_filename = f"{uuid.uuid4()}{file_extension}"
+            temp_file_path = os.path.join(temp_dir, unique_filename)
+            
+            # Save the uploaded file to disk
+            with open(temp_file_path, 'wb+') as destination:
+                for chunk in image_file.chunks():
+                    destination.write(chunk)
+            
+            print(f"Saved uploaded image to: {temp_file_path}")
+            
+            # Create base64 representation for display in template
             import base64
             from io import BytesIO
             from PIL import Image
             
             # Create base64 representation for display in template
-            image = Image.open(image_file)
+            image = Image.open(temp_file_path)
             # Resize for performance if needed
             if max(image.size) > 800:
                 image.thumbnail((800, 800))
@@ -253,14 +271,13 @@ def image_search(request):
             image_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
             uploaded_image = f"data:image/jpeg;base64,{image_str}"
             
-            # Reset file pointer for further processing
-            image_file.seek(0)
-            
             # Continue with existing code...
-            print(f"Analyzing image: {image_file.name}")
-            keywords = analyze_image_with_gemini(image_file)
+            print(f"Analyzing image: {temp_file_path}")
+            keywords = analyze_image_with_gemini(temp_file_path)
             
             if not keywords:
+                # Clean up the temp file
+                os.remove(temp_file_path)
                 return render(request, 'result.html', {
                     'error': 'Could not extract any fashion keywords from the image. Please try a different image.'
                 })
@@ -323,6 +340,9 @@ def image_search(request):
             combined_keywords = ", ".join(keywords[:5])  # Limit to first 5 for display
             if len(keywords) > 5:
                 combined_keywords += "..."
+            
+            # Clean up the temp file
+            os.remove(temp_file_path)
                 
             return render(request, 'result.html', {
                 'videos': sorted_videos,
@@ -332,40 +352,44 @@ def image_search(request):
                 'accounts_searched': FASHION_ACCOUNTS,
                 'is_image_search': True,
                 'keywords': keywords,
-                'uploaded_image': uploaded_image  # Add this line
+                'uploaded_image': uploaded_image
             })
             
         except Exception as e:
             import traceback
             print(f"Error in image search: {str(e)}")
             print(traceback.format_exc())
+            
+            # Clean up temp file if it exists
+            try:
+                if 'temp_file_path' in locals():
+                    os.remove(temp_file_path)
+            except:
+                pass
+                
             return render(request, 'result.html', {'error': f'Error processing image: {str(e)}'})
             
     return redirect('search_video')
 
-def analyze_image_with_gemini(image_file):
+def analyze_image_with_gemini(image_input):
     """
     Analyze an image using Google's Gemini API to extract fashion-related keywords.
     
     Args:
-        image_file: The uploaded image file
+        image_input: The uploaded image file or file path
     
     Returns:
         list: Fashion-related keywords extracted from the image
     """
     
-    
     # Configure API key
-    # genai.configure(api_key="AIzaSyDy1bzPfSkaPih1dL5AtcSXxbjxJhc5ai8")  # Replace with your actual API key
-    
-    # Set up the model
-    # model = genai.GenerativeModel('gemini-pro-vision')
     client = genai.Client(api_key="AIzaSyDy1bzPfSkaPih1dL5AtcSXxbjxJhc5ai8")
     
     try:
-        # Read and process the image
-        img = Image.open(image_file)
-        
+        # Now we're only handling file paths since we save the file first
+        if not isinstance(image_input, str):
+            raise ValueError("image_input must be a file path string")
+            
         # Prepare the prompt
         prompt = """
         Analyze this fashion image and extract relevant keywords that describe:
@@ -378,14 +402,13 @@ def analyze_image_with_gemini(image_file):
         Each keyword should be a single word or short phrase that could work as a hashtag.
         """
         
+        # Use the built-in file upload with file path
+        my_file = client.files.upload(file=image_input)
+
         # Generate content with the image and prompt
-        # response = model.generate_content([prompt, img])
-
-        my_file = client.files.upload(file=image_file)
-
         response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=[my_file, prompt],
+            model="gemini-2.0-flash",
+            contents=[my_file, prompt],
         )
         
         # Extract and process keywords
@@ -399,7 +422,9 @@ def analyze_image_with_gemini(image_file):
         return keywords
         
     except Exception as e:
-        print(f"Error analyzing image with Gemini: {e}")
+        print(f"Error analyzing image with Gemini: {str(e)}")
+        import traceback
+        print(traceback.format_exc())
         # Return a list of generic fashion keywords as fallback
         return ["fashion", "style", "outfit"]
 
@@ -408,10 +433,39 @@ def analyze_image_only(request):
     if request.method == 'POST' and request.FILES.get('image'):
         try:
             image_file = request.FILES['image']
-            keywords = analyze_image_with_gemini(image_file)
-            return JsonResponse({'keywords': keywords})
+            
+            # Create temp directory if it doesn't exist
+            import os, uuid
+            temp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'temp_uploads')
+            os.makedirs(temp_dir, exist_ok=True)
+            
+            # Generate a unique filename
+            file_extension = os.path.splitext(image_file.name)[1].lower()
+            unique_filename = f"{uuid.uuid4()}{file_extension}"
+            temp_file_path = os.path.join(temp_dir, unique_filename)
+            
+            # Save the uploaded file to disk
+            with open(temp_file_path, 'wb+') as destination:
+                for chunk in image_file.chunks():
+                    destination.write(chunk)
+            
+            # Now pass the file path to the Gemini analysis function
+            try:
+                keywords = analyze_image_with_gemini(temp_file_path)
+                # Clean up the temp file
+                os.remove(temp_file_path)
+                return JsonResponse({'keywords': keywords})
+            except Exception as e:
+                # Clean up the temp file in case of error
+                os.remove(temp_file_path)
+                raise e
+                
         except Exception as e:
+            import traceback
+            print(f"Error in analyze_image_only: {str(e)}")
+            print(traceback.format_exc())
             return JsonResponse({'error': str(e)}, status=400)
+            
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 def women_fashion_reels(request):
