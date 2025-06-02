@@ -93,17 +93,17 @@ def get_instagram_reels_by_username(username):
     conn = http.client.HTTPSConnection("instagram-social-api.p.rapidapi.com")
     
     headers = {
-        'x-rapidapi-key': "d30c9b20a1mshf7b0cf45d9eb8c4p1b1d51jsn7724536d9cb5",
+        'x-rapidapi-key': "4a7319f197msh26e06ff8d5350c9p1469b4jsnf3b730dae82f",
         'x-rapidapi-host': "instagram-social-api.p.rapidapi.com"
     }
     
     # Make the request
     conn.request("GET", f"/v1/reels?username_or_id_or_url={username}", headers=headers)
-    
+    # print(conn.status)
     res = conn.getresponse()
     data = res.read()
     response_data = data.decode("utf-8")
-    
+    print(response_data)
     # Parse the response
     try:
         instagram_data = json.loads(response_data)
