@@ -46,7 +46,7 @@ MEN_FASHION_ACCOUNTS = [
     "vouguemann",
     "menlifestylestudio", 
     "mensoutfitsvision",
-    "kikalateefff",
+    
     "menswithstreetstyle",
     "mensfashionreview",
     "thedapperedman",
